@@ -1,25 +1,41 @@
-/** @fileoverview DKPTKA billing codes. */
-
-import { apiGet, apiPost } from './http.js';
-
-/** @param {string} role */
-export function listBilling(role) {
-  return apiGet('/billing', { role });
-}
-
-/** Reissue an expired billing code ("Proses lagi"); 409 otherwise. */
-export function reissueBilling(role, id) {
-  return apiPost(`/billing/${encodeURIComponent(id)}/reissue`, undefined,
-    { role });
-}
-
 /**
- * Employer self-declares a bill as paid (tanda bukti, separate from
- * Simponi's authoritative confirm-payment/SM-07); 409 unless Belum dibayar.
- * `buktiBayar` ({namaBerkas, ukuranKb, berkasId}) is required for SKRD bills
- * (bukti pembayaran dari bank daerah, diteruskan ke Disnaker setempat).
+ * @fileoverview Contract + validator untuk tagihan DKPTKA/SKRD sisi pemberi
+ * kerja (akun portal): pernyataan pemberi kerja bahwa mereka sudah membayar
+ * — DKPTKA di bank persepsi, atau SKRD di Kas Daerah lewat bank daerah
+ * (keduanya di luar TKA Online; Simponi di luar lingkup aplikasi).
+ * Konfirmasi ini menjadikan tagihan Lunas dan memicu persetujuan otomatis SK
+ * Pengesahan RPTKA (menunggu TTE Direktur). `buktiBayar` WAJIB untuk tagihan
+ * SKRD (bukti pembayaran dari bank daerah, diteruskan ke Disnaker setempat)
+ * — jenis tagihan tidak diketahui kontrak ini, jadi wajib-nya diperiksa di
+ * endpoint (`routes/portal.js` `confirmBayarEmployer`), bukan di sini.
  */
-export function confirmBayar(role, id, buktiBayar = null) {
-  return apiPost(`/billing/${encodeURIComponent(id)}/confirm-bayar`,
-    { konfirmasi: true, ...(buktiBayar ? { buktiBayar } : {}) }, { role });
+
+import { mergeErrors, validateContract } from './schema.js';
+
+export const BILLING_KONFIRMASI_REQUEST = {
+  name: 'BillingKonfirmasiRequest',
+  description: 'Pemberi kerja menyatakan sudah membayar tagihan ini. ' +
+    '`konfirmasi` harus true; `buktiBayar` wajib untuk tagihan SKRD.',
+  fields: {
+    konfirmasi: { type: 'boolean', required: true, example: true,
+      description: 'Pernyataan pemberi kerja sudah membayar tagihan ini.' },
+    buktiBayar: { type: 'object', required: false,
+      description: 'Berkas bukti pembayaran (wajib untuk tagihan SKRD, ' +
+        'diteruskan ke Disnaker setempat) — {namaBerkas, ukuranKb, ' +
+        'berkasId}.',
+      example: { namaBerkas: 'bukti-transfer-bank-daerah.pdf',
+        ukuranKb: 180, berkasId: 'a1b2c3' } },
+  },
+};
+
+export function validateBillingKonfirmasi(payload) {
+  const base = validateContract(BILLING_KONFIRMASI_REQUEST, payload);
+  let result = base.errors.konfirmasi || payload?.konfirmasi === true ? base
+    : mergeErrors(base, { konfirmasi: 'Centang pernyataan sudah membayar ' +
+      'terlebih dahulu.' });
+  if (payload?.buktiBayar != null && !payload.buktiBayar?.namaBerkas) {
+    result = mergeErrors(result, { buktiBayar: 'Berkas bukti pembayaran ' +
+      'tidak valid.' });
+  }
+  return result;
 }
