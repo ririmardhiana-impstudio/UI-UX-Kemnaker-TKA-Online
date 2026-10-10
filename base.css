@@ -1,0 +1,224 @@
+/*
+ * Base rules shared by every TKA Online page. No raw values here —
+ * everything references css/tokens.css.
+ */
+
+@layer base {
+  html,
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
+  }
+}
+
+/*
+ * Helper classes for tokens that have no DaisyUI utility name.
+ * Kept in @layer utilities: DaisyUI 5 ships its components (.badge, .btn)
+ * in nested sub-layers of `utilities` (utilities.daisyui.l1...), and rules
+ * placed directly in the parent layer win over those sub-layers. Tailwind
+ * utilities (same layer, injected later) can still override these helpers.
+ */
+@layer utilities {
+  .badge-special {
+    color: var(--color-special);
+    background-color: var(--color-special-soft);
+    border-color: var(--color-special-soft);
+  }
+
+  .badge-highlight {
+    color: var(--color-highlight-content);
+    background-color: var(--color-highlight);
+    border-color: var(--color-highlight);
+  }
+
+  .text-success-bright {
+    color: var(--color-success-bright);
+  }
+
+  .text-info-bright {
+    color: var(--color-info-bright);
+  }
+
+  .text-warning-bright {
+    color: var(--color-warning-bright);
+  }
+
+  .bg-success-bright {
+    background-color: var(--color-success-bright);
+  }
+
+  .bg-warning-bright {
+    background-color: var(--color-warning-bright);
+  }
+
+  .bg-info-bright {
+    background-color: var(--color-info-bright);
+  }
+
+  .animate-shake {
+    animation: shake 400ms var(--easing-standard);
+  }
+
+  .animate-fade-in {
+    animation: fade-in var(--duration-fast) ease-out;
+  }
+
+  .prototype-banner-corner {
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  .prototype-banner-countdown-run {
+    animation: prototype-countdown 4000ms linear forwards;
+  }
+
+  .z-banner {
+    z-index: var(--z-banner);
+  }
+
+  .z-sticky {
+    z-index: var(--z-sticky);
+  }
+}
+
+/* A11y rules intentionally unlayered so no utility can switch them off. */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tab bar menu (DaisyUI `tabs tabs-border`): tab aktif = kartu putih
+   bersudut atas membulat dengan garis pendek navy di bawah teks; tab lain
+   redup di atas alas abu. Unlayered agar menang atas utility per-halaman
+   (px-0, gap-6, text-base-content/70, border-b). */
+.tabs-border {
+  gap: 0;
+  border-bottom: 0;
+  /* Tarik kartu data (di bawah) ke atas melewati `gap-5` induk (#view)
+     supaya tab aktif menempel ke kartu tanpa celah. */
+  margin-bottom: -1.25rem;
+}
+
+.tabs-border > .tab {
+  position: relative;
+  margin: 0;
+  height: auto;
+  line-height: 1.25rem;
+  padding: 0.875rem 1.75rem 1.5rem;
+  border-radius: var(--radius-box) var(--radius-box) 0 0;
+  background-color: color-mix(in oklab, var(--color-base-300) 45%, transparent);
+  color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+
+.tabs-border > .tab::before {
+  display: none;
+}
+
+.tabs-border > .tab:hover:not(.tab-active, [aria-selected="true"]) {
+  background-color: color-mix(in oklab, var(--color-base-300) 70%, transparent);
+}
+
+.tabs-border > .tab.tab-active,
+.tabs-border > .tab[aria-selected="true"] {
+  background-color: var(--color-base-100);
+  color: var(--tka-navy-900);
+  font-weight: 700;
+  /* Timpa garis atas kartu di bawahnya agar tab aktif menyatu dengan kartu. */
+  z-index: 1;
+  margin-bottom: -1px;
+}
+
+/* Kartu tepat di bawah tab bar: sudut kiri-atas siku agar tab pertama menyatu. */
+.tabs-border + * {
+  border-top-left-radius: 0;
+}
+
+.tabs-border > .tab.tab-active > :not(.badge),
+.tabs-border > .tab[aria-selected="true"] > :not(.badge) {
+  color: inherit;
+}
+
+.tabs-border > .tab.tab-active::after,
+.tabs-border > .tab[aria-selected="true"]::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: auto 1.75rem 0.5rem;
+  height: 3px;
+  border-radius: 9999px;
+  background-color: var(--tka-navy-900);
+}
+
+/* Skip link (WCAG 2.4.1): hidden above the viewport until focused. Sits
+   right of the prototype banner corner. Unlayered like the rules above. */
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 3.5rem;
+  z-index: var(--z-banner);
+  transform: translateY(-200%);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-field);
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Focus ring on dark surfaces (navy portal sidebar, office sidebar, dark
+   bars): the default blue ring is < 3:1 there (WCAG 1.4.11), so switch to
+   the light sky tone (~7:1 on navy). Unlayered like the rule above. */
+.bg-primary :focus-visible,
+.bg-neutral :focus-visible {
+  outline-color: var(--color-info-bright);
+}
+
+/* Cetak dokumen dari dialog portal (js/pages/portal/cetak.js). */
+@media print {
+  html.print-surat body > :not(#portal-modal) {
+    display: none !important;
+  }
+
+  html.print-surat #portal-modal {
+    position: static !important;
+    display: block !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    background: none !important;
+  }
+
+  html.print-surat #portal-modal .modal-box {
+    max-height: none !important;
+    max-width: none !important;
+    width: 100% !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    translate: none !important;
+    scale: none !important;
+  }
+
+  html.print-surat #portal-modal .modal-backdrop {
+    display: none !important;
+  }
+}

@@ -1,0 +1,152 @@
+/*
+ * TKA Online design tokens — single source of every raw visual value.
+ * Hex source values come from the legacy Claude Design export
+ * (the legacy .dc.html pages, git 2630ca4); each is converted to oklch
+ * for DaisyUI v5.
+ *
+ * Layout of this file:
+ *   1. :root primitives + project semantic tokens (non-DaisyUI names)
+ *   2. [data-theme="tka"]         public / employer portal / hotline theme
+ *   3. [data-theme="tka-office"]  back office theme (darker navy chrome)
+ *   4. keyframes
+ *
+ * Pages consume DaisyUI semantic classes (bg-primary, text-base-content/70,
+ * badge-success, ...). Custom tokens without a DaisyUI name are exposed
+ * through the helper classes in css/base.css — never through hex in HTML.
+ */
+
+:root {
+  /* Primitive palette (hex from legacy -> oklch) */
+  --tka-navy-900: oklch(29.48% 0.0953 259.53);      /* #0b2a5b */
+  --tka-blue-600: oklch(50.55% 0.1982 260.06);      /* #0b5bd3 */
+  --tka-ink-900: oklch(24.37% 0.0614 261.77);       /* #0f1f3d */
+  --tka-ink-950: oklch(21.96% 0.0421 263.19);       /* #101a2e */
+  --tka-white: oklch(100% 0 0);                     /* #ffffff */
+  --tka-mist-50: oklch(97.83% 0.0074 260.73);       /* #f5f8fd */
+  --tka-mist-200: oklch(92.66% 0.0162 262.75);      /* #e1e7f2 */
+  --tka-gray-50: oklch(97% 0.0029 264.54);          /* #f4f5f7 */
+  --tka-gray-200: oklch(92.69% 0.0104 261.79);      /* #e3e7ee */
+  --tka-green-700: oklch(49.87% 0.1168 157.07);     /* #067647 */
+  --tka-amber-700: oklch(53.94% 0.1562 42.99);      /* #b54708 */
+  --tka-red-700: oklch(52.68% 0.189 24.75);         /* #c0262d */
+  --tka-purple-600: oklch(49.8% 0.1953 291.5);      /* #6941c6 */
+  --tka-purple-50: oklch(95.19% 0.0232 299.37);     /* #f1ecfd */
+  --tka-yellow-400: oklch(84.39% 0.1513 87.87);     /* #f5c542 */
+  --tka-yellow-950: oklch(30.46% 0.0624 85.59);     /* #3d2c00 */
+  --tka-mint-300: oklch(83.58% 0.1091 165.34);      /* #7fe0b8 */
+  --tka-sky-300: oklch(77.23% 0.1154 263.77);       /* #8fb4ff */
+
+  /* Semantic tokens without a DaisyUI utility (used via css/base.css) */
+  --color-special: var(--tka-purple-600);           /* tag "Khusus" */
+  --color-special-soft: var(--tka-purple-50);
+  --color-highlight: var(--tka-yellow-400);         /* badge on dark nav */
+  --color-highlight-content: var(--tka-yellow-950);
+  --color-success-bright: var(--tka-mint-300);      /* success on dark bg */
+  --color-info-bright: var(--tka-sky-300);          /* link on dark bg */
+  --color-warning-bright: var(--tka-yellow-400);    /* pending on dark bg */
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, Menlo, monospace;
+
+  /* Focus ring (WCAG 2.4.7 / 1.4.11) */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--tka-blue-600);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* z-index scale */
+  --z-sticky: 20;
+  --z-drawer: 40;
+  --z-modal: 50;
+  --z-banner: 60;
+}
+
+[data-theme="tka"] {
+  color-scheme: light;
+  --color-base-100: var(--tka-white);
+  --color-base-200: var(--tka-mist-50);
+  --color-base-300: var(--tka-mist-200);
+  --color-base-content: var(--tka-ink-900);
+  --color-primary: var(--tka-navy-900);
+  --color-primary-content: var(--tka-white);
+  --color-secondary: var(--tka-blue-600);
+  --color-secondary-content: var(--tka-white);
+  --color-accent: var(--tka-blue-600);
+  --color-accent-content: var(--tka-white);
+  --color-neutral: var(--tka-ink-900);
+  --color-neutral-content: var(--tka-white);
+  --color-info: var(--tka-blue-600);
+  --color-info-content: var(--tka-white);
+  --color-success: var(--tka-green-700);
+  --color-success-content: var(--tka-white);
+  --color-warning: var(--tka-amber-700);
+  --color-warning-content: var(--tka-white);
+  --color-error: var(--tka-red-700);
+  --color-error-content: var(--tka-white);
+  --radius-selector: 99rem;
+  --radius-field: 0.625rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* Back office: same palette, darker chrome (#101a2e) + grey canvas. */
+[data-theme="tka-office"] {
+  color-scheme: light;
+  --color-base-100: var(--tka-white);
+  --color-base-200: var(--tka-gray-50);
+  --color-base-300: var(--tka-gray-200);
+  --color-base-content: var(--tka-ink-900);
+  --color-primary: var(--tka-ink-950);
+  --color-primary-content: var(--tka-white);
+  --color-secondary: var(--tka-blue-600);
+  --color-secondary-content: var(--tka-white);
+  --color-accent: var(--tka-blue-600);
+  --color-accent-content: var(--tka-white);
+  --color-neutral: var(--tka-ink-950);
+  --color-neutral-content: var(--tka-white);
+  --color-info: var(--tka-blue-600);
+  --color-info-content: var(--tka-white);
+  --color-success: var(--tka-green-700);
+  --color-success-content: var(--tka-white);
+  --color-warning: var(--tka-amber-700);
+  --color-warning-content: var(--tka-white);
+  --color-error: var(--tka-red-700);
+  --color-error-content: var(--tka-white);
+  --radius-selector: 99rem;
+  --radius-field: 0.5625rem;
+  --radius-box: 0.875rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  30%, 70% { transform: translateX(2px); }
+  50% { transform: translateX(-3px); }
+}
+
+@keyframes prototype-countdown {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
