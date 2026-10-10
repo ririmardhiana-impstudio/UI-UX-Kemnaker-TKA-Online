@@ -1,0 +1,162 @@
+1. Pengesahan RPTKA pekerjaan kurang dari 6 (enam) bulan (Tidak bisa perpanjang):
+   - Form data isiannya:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir paspor, 	tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA (1,2,3,4,5,& 6 Bulan); dan
+	3) Lokasi Kerja TKA (Pilih).
+   - Form Dokumen Permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko 	kecelakaan kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar 	belakang 	merah; dan
+2. Pengesahan RPTKA pekerjaan lebih dari 6 (enam) bulan;:
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, 	pendidikan, status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal 	berakhir paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor 	telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA (7,8,9,10,11,12, dan 24 Bulan); dan
+	3) Lokasi Kerja TKA (Pilih).
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko kecelakaan 	kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar belakang 	merah; dan
+	8) surat penunjukan Tenaga Kerja Pendamping TKA.
+3. Pengesahan RPTKA non-DKPTKA;
+   - form kegiatan:
+	1. Reguler
+	2. KEK
+	3. IKN
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA  (Pilih).
+
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko kecelakaan 	kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar belakang 	merah; dan
+	8) surat penunjukan Tenaga Kerja Pendamping TKA.
+	9) Surat persetujuan dari Dewan KEK untuk pembebasan pembayaran DKPTKA (KEK)
+	10) surat persetujuan dari Kepala Otorita Ibu Kota Nusantara untuk pembebasan pembayaran DKPTKA 	(IKN)
+4. Pengesahan RPTKA KEK;
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA  (Pilih).
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko 	 kerja 	untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  	yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar 	belakang merah; dan
+	8) surat penunjukan Tenaga Kerja Pendamping TKA.
+5. Pengesahan RPTKA Ibu Kota Nusantara;
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA  (Pilih).
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko kecelakaan 	kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar belakang 	merah; dan
+	8) surat penunjukan Tenaga Kerja Pendamping TKA.
+6. Pengesahan RPTKA kerja sama internasional.
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA  (Pilih).
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko kecelakaan 	kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar belakang 	merah; dan
+	8) surat penunjukan Tenaga Kerja Pendamping TKA.
+7. Pengesahan RPTKA Alih Status:
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA (Pilih).
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko 	kecelakaan kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  	yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) Pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar 	belakang merah; dan
+	8)  surat penunjukan Tenaga Kerja Pendamping TKA.
+	9)  ITK
+8. Pengesahan RPTKA Dahsuskim:
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA  (Pilih).
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko 	kecelakaan kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  	yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar 	belakang merah; dan
+	8) surat penunjukan Tenaga Kerja Pendamping TKA.
+9. Pengesahan RPTKA Direksi/Komisaris:
+   - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA  (Pilih).
+   - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) Sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko 	kecelakaan kerja untuk pekerjaan yang bersifat sementara; 
+	4) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  	yang 	bekerja lebih dari 6 (enam) bulan;
+	5) Paspor kebangsaan TKA (berwarna);
+	6) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar 	belakang merah;
+	7) Pengesahan RPTKA Pemberi kerja TKA Pertama dan 
+	8) Persetujuan dari Pemberi kerja TKA Pertama
+	9) ITAS
+10. Pengesahan RPTKA Rangkap Jabatan
+    - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA (Pilih).
+    - form dokumen permohonan:
+      	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko 	kecelakaan kerja untuk pekerjaan yang bersifat sementara; 
+	4) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  	yang 	bekerja lebih dari 6 (enam) bulan;
+	5) paspor kebangsaan TKA (berwarna);
+	6) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar 	belakang merah;
+	7) Pengesahan RPTKA Pemberi kerja TKA Pertama dan 
+	8) Persetujuan dari Pemberi kerja TKA Pertama
+	9) ITAS
+11. Pengesahan RPTKA Non-DKPTKA Non-HPK:
+    - form data isian:
+	1) identitas TKA meliputi nama TKA, tempat lahir, tanggal lahir, jenis kelamin, pendidikan, 	status perkawinan, kebangsaan, nomor paspor, tanggal penerbitan paspor, tanggal berakhir 	paspor, tempat diterbitkan paspor, alamat tinggal, kode pos, alamat e-mail, dan nomor telepon;
+	2) jabatan TKA dan jangka waktu bekerja TKA; dan
+	3) Lokasi Kerja TKA  (Pilih).
+    - form dokumen permohonan:
+	1) ijazah pendidikan; 
+	2) sertifikat kompetensi atau surat keterangan pengalaman kerja minimal 5 (lima) tahun; 
+	3) perjanjian kerja atau perjanjian lain dengan Pemberi Kerja TKA;
+	4) polis asuransi TKA yang menjamin pelindungan paling sedikit untuk jenis resiko 	kecelakaan kerja untuk pekerjaan yang bersifat sementara; 
+	5) polis asuransi TKA dari negara asal atau program jaminan sosial nasional bagi TKA  	yang 	bekerja lebih dari 6 (enam) bulan;
+	6) paspor kebangsaan TKA (berwarna);
+	7) pas foto ukuran 4x6 berwarna terbaru menggunakan pakaian rapi berkerah dengan latar 	belakang merah

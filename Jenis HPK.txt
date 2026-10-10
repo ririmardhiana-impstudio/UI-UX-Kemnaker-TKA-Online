@@ -1,0 +1,177 @@
+pada saat mengajukan hpk, ketika memilih jenis hpk form data isian dan dokumen permohonan berbeda tiap jenis HPK nya.
+  1. HPK pekerjaan kurang dari 6 (enam) bulan:
+     - Form Data isian:
+       	a. identitas Pemberi Kerja TKA;
+	b. alasan penggunaan TKA;
+	c. jabatan yang akan diduduki TKA;
+	d. jumlah TKA;
+	e. jangka waktu penggunaan TKA (tanggal, bulan, dan tahun) dan
+	f. Lokasi Kerja TKA (lebih dari satu Kabupaten/Kota)
+     - Form Dokumen Permohonan:
+	a. surat permohonan pengesahan RPTKA ;
+	b. surat tugas atau surat kuasa;
+	c. NIB;
+	d. akta dan keputusan pengesahan pendirian dan/atau perubahan dari instansi yang berwenang;
+	e. nomor pokok wajib pajak;
+	f. bukti wajib lapor ketenagakerjaan di perusahaan; 
+	g. domisili Pemberi Kerja TKA;
+	h. kontrak pekerjaan (optional).
+     - Video Conference: Ya
+
+  2. HPK pekerjaan lebih dari 6 (enam) bulan:
+     - Form data isian:
+	a. identitas Pemberi Kerja TKA;
+	b. alasan penggunaan TKA;
+	c. jabatan yang akan diduduki TKA;
+	d. jumlah TKA;
+	e. jangka waktu penggunaan TKA (tanggal, bulan, dan tahun)
+	f. Lokasi Kerja TKA (Kabupaten/Kota)
+	g. identitas Tenaga Kerja Pendamping TKA; dan
+	h. rencana penyerapan tenaga kerja Indonesia setiap tahun.
+     - Form dokumen permohonan:
+	a. surat permohonan Pengesahan RPTKA ;
+	b. surat tugas atau surat kuasa ;
+	c. NIB;
+	d. akta dan keputusan pengesahan pendirian dan/atau perubahan dari instansi yang berwenang;
+	e. nomor pokok wajib pajak;
+	f. bukti wajib lapor ketenagakerjaan di perusahaan;
+	g. domisili Pemberi Kerja TKA;
+	h. struktur organisasi;
+	i. rencana pelaksanaan alih teknologi dan alih keahlian
+	j. surat pernyataan Pemberi Kerja TKA untuk:
+		1. menunjuk Tenaga Kerja Pendamping TKA;
+		2. melaksanakan pendidikan dan pelatihan kerja bagi Tenaga Kerja Pendamping TKA sesuai 		   dengan kualifikasi jabatan yang diduduki oleh TKA; dan
+		3. memfasilitasi pendidikan dan pelatihan bahasa Indonesia kepada TKA.
+	k. kontrak pekerjaan/kerjasama (optional)
+     - Video Conference: Ya
+
+  3. HPK non-DKPTKA:
+     - form data isian:
+	a. identitas Pemberi Kerja TKA;
+	b. alasan penggunaan TKA;
+	c. jabatan atau kedudukan TKA dalam struktur Organisasi perusahaan;
+	d. jumlah TKA;
+	e. jangka waktu penggunaan TKA (tanggal, bulan, dan tahun)
+	f. Lokasi Kerja TKA (Kabupaten/Kota) dan
+	g. identitas Tenaga Kerja Pendamping TKA.
+
+     - form dokumen permohonan:
+	a. surat permohonan Pengesahan RPTKA;
+	b. surat tugas atau surat kuasa;
+	c. NIB;
+	d. akta dan keputusan pengesahan pendirian dan/atau perubahan dari instansi yang berwenang;
+	e. nomor pokok wajib pajak;
+	f. bukti wajib lapor ketenagakerjaan di perusahaan;
+	g. domisili Pemberi Kerja TKA;
+	h. struktur organisasi;
+	i. rencana pelaksanaan alih teknologi dan alih keahlian 
+	j. surat persetujuan dari kementerian/lembaga untuk pembebasan DKPTKA; dan
+	k. surat pernyataan Pemberi Kerja TKA untuk:
+		1) menunjuk Tenaga Kerja Pendamping TKA yang memiliki kualifikasi jabatan yang relevan 		dengan jenis pekerjaan TKA;
+		2) melaksanakan pendidikan dan pelatihan kerja bagi Tenaga Kerja Pendamping TKA sesuai 		dengan kualifikasi jabatan yang diduduki oleh TKA; dan
+		3) memfasilitasi pendidikan dan pelatihan Bahasa Indonesia kepada TKA.
+     - Video Conference: Ya
+
+  4. HPK KEK:
+     - form data isian:
+	a. identitas Pemberi Kerja TKA;
+	b. alasan penggunaan TKA;
+	c. jabatan yang akan diduduki TKA;
+	d. jumlah TKA;
+	e. jangka waktu penggunaan TKA (tanggal, bulan, dan tahun, Maks 5 tahun) 
+	f. Lokasi Kerja TKA (Kabupaten/Kota)
+	g. identitas Tenaga Kerja Pendamping;
+	h. rencana penyerapan tenaga kerja indonesia setiap tahun
+    - form dokumen permohonan:
+	a. surat permohonan Pengesahan RPTKA;
+	b. surat tugas atau surat kuasa ;
+	c. NIB;
+	d. akta dan keputusan pengesahan pendirian dan/atau perubahan dari instansi yang berwenang;
+	e. nomor pokok wajib pajak;
+	f. bukti wajib lapor ketenagakerjaan di perusahaan;
+	g. domisili Pemberi Kerja TKA; dan
+	h. surat persetujuan Dewan Nasional KEK 
+	i. kontrak pekerjaan dan kerjasama (optional)
+	j. struktur organisasi ;
+	k. rencana pelaksanaan alih teknologi dan alih keahlian 
+	I. surat pernyataan Pemberi Kerja TKA untuk:
+		a) menunjuk Tenaga Kerja Pendamping TKA yang memiliki kualifikasi jabatan yang
+		relevan dengan jenis pekerjaan TKA;
+		b) melaksanakan pendidikan dan pelatihan kerja bagi Tenaga Kerja Pendamping TKA
+		sesuai dengan kualifikasi jabatan yang diduduki oleh TKA; dan
+		c) memfasilitasi pendidikan dan pelatihan bahasa Indonesia kepada TKA.
+     - Video Conference: Ya
+
+  5. HPK Ibu Kota Nusantara:
+     - form data isian:
+	a. identitas Pemberi Kerja TKA;
+	b. alasan penggunaan TKA;
+	c. jabatan yang akan diduduki TKA;
+	d. jumlah TKA;
+	e. jangka waktu penggunaan TKA (tanggal, bulan, dan tahun, Maks 10 tahun)
+	f. Lokasi Kerja TKA (Kabupaten/Kota)
+	g. identitas Tenaga Kerja Pendamping;
+	h. rencana penyerapan tenaga kerja indonesia setiap tahun
+     - form dokumen permohonan:
+	a. surat permohonan Pengesahan RPTKA;
+	b. surat tugas atau surat kuasa ;
+	c. NIB;
+	d. akta dan keputusan pengesahan pendirian dan/atau perubahan dari instansi yang berwenang;
+	e. nomor pokok wajib pajak;
+	f. bukti wajib lapor ketenagakerjaan di perusahaan;
+	g. domisili Pemberi Kerja TKA; dan
+	h. surat persetujuan Kepala Otorita IKN 
+	i. kontrak pekerjaan dan kerjasama (optional)
+	j. struktur organisasi ;
+	k. rencana pelaksanaan alih teknologi dan alih keahlian 
+	l. surat pernyataan Pemberi Kerja TKA untuk:
+		a) menunjuk Tenaga Kerja Pendamping TKA yang memiliki kualifikasi jabatan yang relevan 		dengan jenis pekerjaan TKA;
+		b) melaksanakan pendidikan dan pelatihan kerja bagi Tenaga Kerja Pendamping TKA sesuai 		dengan kualifikasi jabatan yang diduduki oleh TKA; dan
+		c) memfasilitasi pendidikan dan pelatihan bahasa Indonesia kepada TKA.
+     - Video Conference: Ya
+
+  6. HPK Kerjasama Internasional:
+     - form data isian:
+	a. identitas Pemberi Kerja TKA;
+	b. alasan penggunaan TKA;
+	c. jabatan yang akan diduduki TKA;
+	d. jumlah TKA;
+	e. jangka waktu penggunaan TKA (tanggal, bulan, dan tahun) dan
+	f. Lokasi Kerja TKA (Kabupaten/Kota)
+	g. identitas Tenaga Kerja Pendamping;
+	h. rencana penyerapan tenaga kerja indonesia setiap tahun
+	i. bentuk kerjasama
+     - form dokumen permohonan:
+	a. surat permohonan Pengesahan RPTKA;
+	b. surat tugas atau surat kuasa ;
+	c. NIB;
+	d. akta dan keputusan pengesahan pendirian dan/atau perubahan dari instansi yang berwenang;
+	e. nomor pokok wajib pajak;
+	f. bukti wajib lapor ketenagakerjaan di perusahaan;
+	g. domisili Pemberi Kerja TKA; dan
+	h. rekomendasi pemerintah negara asing sebagai mitra kerjasama internasional 
+	i. kontrak pekerjaan dan kerjasama (optional)
+	j. struktur organisasi ;
+	k. rencana pelaksanaan alih teknologi dan alih keahlian 
+	l. surat pernyataan Pemberi Kerja TKA untuk:
+		a) menunjuk Tenaga Kerja Pendamping TKA yang memiliki kualifikasi jabatan yang relevan 		dengan jenis pekerjaan TKA;
+		b) melaksanakan pendidikan dan pelatihan kerja bagi Tenaga Kerja Pendamping TKA sesuai 		dengan kualifikasi jabatan yang diduduki oleh TKA; dan
+		c) memfasilitasi pendidikan dan pelatihan bahasa Indonesia kepada TKA.
+     - Video Conference: Ya
+
+  7. HPK Direksi/Komisaris (Untuk KEK pengajuannya sekali saja):
+     - form data isian:
+	a. identitas Pemberi Kerja TKA;
+	b. jabatan yang akan diduduki TKA;
+	c. jumlah TKA;
+	d. jangka waktu penggunaan TKA (tanggal, bulan, dan tahun) dan
+	e. Lokasi Kerja TKA (Kabupaten/Kota)
+     - form dokumen permohonan:
+	a. surat permohonan pengesahan RPTKA ;
+	b. surat tugas atau surat kuasa;
+	c. NIB;
+	d. akta dan keputusan pengesahan pendirian dan/atau perubahan dari instansi yang berwenang;
+	e. nomor pokok wajib pajak;
+	f. bukti wajib lapor ketenagakerjaan di perusahaan; 
+	g. domisili Pemberi Kerja TKA;
+     - Video Conference: Tidak
