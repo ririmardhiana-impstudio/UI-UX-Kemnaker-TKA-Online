@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="tka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TKA Hotline — TKA Online</title>
+  <link rel="icon" href="uploads/kemnaker_new.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/daisyui.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/themes.css" rel="stylesheet" type="text/css" />
+  <link href="css/tokens.css" rel="stylesheet" type="text/css" />
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <meta name="use-mock" content="true" />
+  <meta name="api-base-url" content="/api/v1" />
+  <script>window.USE_MOCK = document.querySelector('meta[name="use-mock"]')?.content === 'true'; window.API_BASE_URL = document.querySelector('meta[name="api-base-url"]')?.content ?? '/api/v1';</script>
+  <script type="module" src="js/api/client.js"></script>
+  <script type="module" src="js/prototype-banner.js"></script>
+</head>
+<body class="min-h-screen bg-base-200 text-base-content">
+  <a href="#main" class="skip-link" data-testid="hotline-link-skip">Lewati ke konten</a>
+
+  <!-- Header: brand, mode (pemberi kerja / agen), nav per mode, identitas -->
+  <header class="flex min-h-15.5 flex-wrap items-center gap-x-4.5 gap-y-2 bg-primary px-4 py-2 text-primary-content md:flex-nowrap md:px-6 md:py-0">
+    <div id="brand"></div>
+    <div role="group" aria-label="Mode hotline" class="flex gap-1 rounded-lg bg-primary-content/10 p-0.75 text-xs font-bold">
+      <button type="button" data-mode="pk" class="cursor-pointer rounded-md px-3 py-1.75">Pemberi kerja</button>
+      <button type="button" data-mode="agen" class="cursor-pointer rounded-md px-3 py-1.75">Agen / petugas</button>
+    </div>
+    <nav id="view-nav" aria-label="Layar hotline" class="order-last flex w-full gap-1 overflow-x-auto text-[13px] font-semibold md:order-none md:ml-3 md:w-auto"></nav>
+    <div class="ml-auto text-right text-[13px] leading-tight">
+      <b id="who" class="block"></b>
+      <span id="who-sub" class="text-[11px] text-primary-content/60"></span>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- PK: Profil (pertama kali masuk) -->
+    <section id="view-profil" data-view="profil" hidden aria-labelledby="profil-title" class="mx-auto my-10 max-w-155 px-5">
+      <form id="profil-form" novalidate class="grid gap-4 rounded-2xl border border-base-300 bg-base-100 p-6 md:p-8">
+        <div>
+          <span class="rounded-md bg-info/10 px-2 py-1 text-[11px] font-extrabold tracking-widest text-secondary">PERTAMA KALI MASUK</span>
+          <h1 id="profil-title" class="mb-1 mt-3 text-2xl font-extrabold">Lengkapi data profil hotline</h1>
+          <p class="text-sm text-base-content/70">Terhubung dengan sesi TKA Online akun <b class="text-base-content">nbp.hrd</b>.</p>
+        </div>
+        <div class="grid grid-cols-[88px_1fr] items-center gap-4.5">
+          <div class="grid size-22 place-items-center rounded-full bg-info/10 text-2xl font-extrabold text-secondary" aria-hidden="true">NBP</div>
+          <label for="profil-foto" class="cursor-pointer text-[13px] font-bold text-secondary hover:underline">Unggah foto profil</label>
+          <input id="profil-foto" type="file" accept="image/png,image/jpeg" class="sr-only" />
+        </div>
+        <div class="grid gap-3.5 md:grid-cols-2">
+          <dl class="grid gap-1.5 md:col-span-2">
+            <dt class="text-[13px] font-bold">Nama pemberi kerja</dt>
+            <dd class="rounded-[10px] border border-base-300 bg-base-200/50 px-3.5 py-3 text-sm">PT Nusantara Baja Presisi</dd>
+          </dl>
+          <div class="grid gap-1.5">
+            <label for="profil-pj" class="text-[13px] font-bold">Penanggung jawab</label>
+            <input id="profil-pj" name="penanggungJawab" value="Rina Wulandari" required maxlength="80" aria-describedby="profil-pj-error" class="input w-full" />
+            <p id="profil-pj-error" class="text-xs text-error" aria-live="polite"></p>
+          </div>
+          <div class="grid gap-1.5">
+            <label for="profil-telepon" class="text-[13px] font-bold">Telepon</label>
+            <input id="profil-telepon" name="telepon" type="tel" value="081287654321" required pattern="0[0-9]{8,13}" data-pattern-message="Nomor telepon diawali 0, 9–14 digit." inputmode="numeric" aria-describedby="profil-telepon-error" class="input w-full" />
+            <p id="profil-telepon-error" class="text-xs text-error" aria-live="polite"></p>
+          </div>
+          <div class="grid gap-1.5 md:col-span-2">
+            <label for="profil-email" class="text-[13px] font-bold">Email</label>
+            <input id="profil-email" name="email" type="email" value="hrd@nusantarabaja.co.id" required maxlength="120" aria-describedby="profil-email-error" class="input w-full" />
+            <p id="profil-email-error" class="text-xs text-error" aria-live="polite"></p>
+          </div>
+        </div>
+        <div id="profil-error" role="alert" class="alert alert-error alert-soft" hidden></div>
+        <button type="submit" class="btn btn-primary h-auto rounded-[10px] py-3.5">Simpan &amp; lanjut</button>
+      </form>
+    </section>
+
+    <!-- PK: Belum login (state) -->
+    <section id="view-notlogin" data-view="notlogin" hidden aria-labelledby="notlogin-title" class="mx-auto my-20 max-w-115 px-5">
+      <div class="rounded-2xl border border-base-300 bg-base-100 p-8 text-center">
+        <h1 id="notlogin-title" class="mb-2 text-[22px] font-extrabold">Anda belum login di TKA-Online</h1>
+        <p class="mb-5.5 text-sm leading-relaxed text-base-content/70">TKA Hotline memakai sesi akun pemberi kerja. Masuk ke TKA Online terlebih dahulu.</p>
+        <a href="akun-login.html" class="btn btn-primary btn-block h-auto rounded-[10px] py-3.5">Masuk ke TKA Online</a>
+      </div>
+    </section>
+
+    <!-- PK "Tiket saya" / Agen "Antrian tiket": daftar + percakapan (+ info agen) -->
+    <section id="view-chat" data-view="chat" hidden aria-label="Percakapan tiket" class="grid lg:h-[calc(100vh-62px)]">
+      <div class="flex min-h-0 flex-col border-b border-r border-base-300 bg-base-100 lg:border-b-0">
+        <div class="grid gap-2.5 border-b border-base-200 p-4">
+          <div class="flex items-center justify-between">
+            <h1 id="list-title" class="text-base font-bold"></h1>
+            <button type="button" id="open-new" class="btn btn-primary btn-sm h-auto rounded-lg px-3 py-2 text-xs">+ Buat Tiket Baru</button>
+          </div>
+          <label class="input input-sm h-auto w-full gap-2 rounded-[9px] py-2 text-[13px]">
+            <span aria-hidden="true" class="text-base-content/50">⌕</span>
+            <span class="sr-only">Cari tiket</span>
+            <input id="ticket-search" type="search" placeholder="Cari nomor tiket, perusahaan, atau kategori" />
+          </label>
+          <div id="ticket-filters" role="group" aria-label="Filter status tiket" class="flex flex-wrap gap-1.5"></div>
+        </div>
+        <div id="ticket-list-wrap" class="max-h-96 flex-1 overflow-auto lg:max-h-none">
+          <div id="ticket-list-loading" class="grid gap-3 p-4" hidden>
+            <div class="skeleton h-16 w-full"></div>
+            <div class="skeleton h-16 w-full"></div>
+            <div class="skeleton h-16 w-full"></div>
+          </div>
+          <div id="ticket-list-error" role="alert" class="alert alert-error alert-soft m-4" hidden>
+            <span data-slot="message">Gagal memuat tiket.</span>
+            <button type="button" class="btn btn-sm" data-retry="list">Coba lagi</button>
+          </div>
+          <p id="ticket-list-empty" class="p-6 text-center text-sm text-base-content/60" hidden>Tidak ada tiket.</p>
+          <ul id="ticket-list" aria-label="Daftar tiket"></ul>
+        </div>
+      </div>
+
+      <div class="flex min-h-0 flex-col bg-base-200">
+        <div class="flex items-center justify-between gap-3 border-b border-base-300 bg-base-100 px-5.5 py-3.5">
+          <div class="min-w-0">
+            <p class="text-xs text-base-content/60"><span id="cur-no"></span> · <span id="cur-kategori"></span></p>
+            <h2 id="cur-judul" class="text-base font-bold"></h2>
+          </div>
+          <div class="flex flex-wrap items-center justify-end gap-2">
+            <span id="cur-status"></span>
+            <span id="cur-locked" hidden class="rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-xs font-bold text-warning">Terkunci · <span id="cur-lock"></span></span>
+            <button type="button" id="act-take" hidden class="btn btn-primary btn-sm rounded-lg text-xs">Ambil tiket</button>
+            <button type="button" id="act-close" hidden class="btn btn-success btn-sm rounded-lg text-xs">Tutup tiket</button>
+            <button type="button" id="act-reopen" hidden class="btn btn-outline btn-sm rounded-lg border-base-content/20 bg-base-100 text-xs">Buka kembali</button>
+          </div>
+        </div>
+        <div id="thread" class="grid max-h-[60vh] min-h-64 flex-1 content-start gap-3.5 overflow-auto p-5.5 lg:max-h-none" aria-live="polite">
+          <p class="justify-self-center rounded-full border border-base-300 bg-base-100 px-3 py-1 text-xs text-base-content/60">Tiket dibuat <span id="cur-tgl"></span></p>
+          <div id="thread-loading" class="flex justify-center py-6" hidden><span class="loading loading-spinner loading-md text-secondary" aria-label="Memuat percakapan"></span></div>
+          <div id="thread-error" role="alert" class="alert alert-error alert-soft" hidden>
+            <span data-slot="message">Gagal memuat percakapan.</span>
+            <button type="button" class="btn btn-sm" data-retry="thread">Coba lagi</button>
+          </div>
+          <ol id="messages" class="grid gap-3.5" aria-label="Pesan"></ol>
+          <p id="thread-closed" hidden class="justify-self-center rounded-full bg-success/10 px-3.5 py-1.5 text-xs font-bold text-success">Tiket ditutup oleh <span id="cur-agen"></span></p>
+        </div>
+        <div id="canned-bar" hidden class="flex flex-wrap gap-1.5 border-t border-base-300 bg-base-100 px-5.5 pt-2">
+          <span class="py-1.5 text-xs text-base-content/60">Jawaban baku:</span>
+        </div>
+        <form id="composer" novalidate class="border-t border-base-200 bg-base-100 px-5.5 py-3.5">
+          <div class="flex items-center gap-2.5">
+            <span aria-hidden="true" title="Lampirkan gambar/berkas" class="grid size-10 flex-none place-items-center rounded-[10px] border border-base-300 text-base-content/70">📎</span>
+            <label for="draft" class="sr-only">Tulis pesan</label>
+            <input id="draft" name="text" required maxlength="2000" autocomplete="off" placeholder="Tulis pesan…" aria-describedby="draft-error" class="input h-auto flex-1 rounded-[10px] py-3" />
+            <button type="submit" id="send" class="btn btn-primary h-auto rounded-[10px] px-4.5 py-3">Kirim</button>
+          </div>
+          <p id="draft-error" class="mt-1 text-xs text-error" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <aside id="agent-aside" hidden aria-labelledby="aside-title" class="grid content-start gap-4 overflow-auto border-l border-base-300 bg-base-100 p-5 text-[13px]">
+        <h2 id="aside-title" class="text-sm font-bold">Info pemberi kerja</h2>
+        <dl class="grid grid-cols-[90px_1fr] gap-x-2.5 gap-y-1.5">
+          <dt class="text-base-content/60">Perusahaan</dt><dd class="font-bold" id="aside-perusahaan"></dd>
+          <dt class="text-base-content/60">Akun</dt><dd id="aside-akun"></dd>
+          <dt class="text-base-content/60">Kategori</dt><dd id="aside-kategori"></dd>
+        </dl>
+        <div class="h-px bg-base-200"></div>
+        <h2 class="text-sm font-bold">Teruskan ke internal</h2>
+        <ul id="internal-list" class="grid gap-1.5"></ul>
+      </aside>
+    </section>
+
+    <!-- PK: Buat tiket baru -->
+    <section id="view-baru" data-view="baru" hidden aria-labelledby="baru-title" class="mx-auto my-8 max-w-170 px-5">
+      <button type="button" data-go-view="tiket" class="cursor-pointer text-[13px] font-bold text-secondary hover:underline">← Daftar tiket</button>
+      <form id="baru-form" novalidate class="mt-3 grid gap-4 rounded-2xl border border-base-300 bg-base-100 p-5 md:p-7">
+        <h1 id="baru-title" class="text-[22px] font-extrabold">Buat tiket baru</h1>
+        <fieldset aria-describedby="baru-kategori-error">
+          <legend class="mb-3.5 text-[13px] font-bold">Kategori pengaduan</legend>
+          <div id="kategori-options" class="grid gap-2 sm:grid-cols-2"></div>
+        </fieldset>
+        <p id="baru-kategori-error" class="-mt-3 text-xs text-error" aria-live="polite"></p>
+        <div class="grid gap-1.5">
+          <label for="baru-judul" class="text-[13px] font-bold">Judul</label>
+          <input id="baru-judul" name="judul" required minlength="5" maxlength="150" value="Jabatan &quot;Welding Inspector&quot; tidak muncul di pilihan" aria-describedby="baru-judul-error" class="input w-full" />
+          <p id="baru-judul-error" class="text-xs text-error" aria-live="polite"></p>
+        </div>
+        <div class="grid gap-1.5">
+          <label for="baru-nomor" class="text-[13px] font-bold">Nomor terkait (barcode / no. permohonan)</label>
+          <input id="baru-nomor" name="nomorTerkait" inputmode="numeric" pattern="[0-9]{1,8}|[0-9]{12}" data-pattern-message="Barcode (maks. 8 digit) atau no. permohonan (12 digit)." value="26004518" aria-describedby="baru-nomor-error" class="input w-full" />
+          <p id="baru-nomor-error" class="text-xs text-error" aria-live="polite"></p>
+        </div>
+        <div class="grid gap-1.5">
+          <label for="baru-rincian" class="text-[13px] font-bold">Rincian</label>
+          <textarea id="baru-rincian" name="rincian" rows="4" required minlength="10" maxlength="2000" aria-describedby="baru-rincian-error" class="textarea w-full resize-y">Saat menambah TKA pada HPK 26004518, jabatan Welding Inspector (kuota 1) tidak tersedia di daftar pilihan. Mohon ditambahkan ke master jabatan.</textarea>
+          <p id="baru-rincian-error" class="text-xs text-error" aria-live="polite"></p>
+        </div>
+        <label for="baru-lampiran" class="cursor-pointer rounded-[10px] border border-dashed border-base-content/20 p-3.5 text-[13px] text-base-content/70">📎 Lampirkan tangkapan layar atau berkas (opsional)</label>
+        <input id="baru-lampiran" type="file" class="sr-only" />
+        <div id="baru-error" role="alert" class="alert alert-error alert-soft" hidden></div>
+        <button type="submit" class="btn btn-primary h-auto rounded-[10px] py-3.5">Kirim tiket</button>
+      </form>
+    </section>
+
+    <!-- Agen: Login -->
+    <section id="view-login" data-view="login" hidden aria-labelledby="login-title" class="mx-auto my-20 max-w-105 px-5">
+      <form id="login-form" novalidate class="grid gap-3.5 rounded-2xl border border-base-300 bg-base-100 p-8">
+        <h1 id="login-title" class="text-[22px] font-extrabold">Masuk agen hotline</h1>
+        <div class="grid gap-1.5">
+          <label for="login-username" class="text-[13px] font-bold">Username</label>
+          <input id="login-username" name="username" value="fajar.n" required autocomplete="username" aria-describedby="login-username-error" class="input w-full" />
+          <p id="login-username-error" class="text-xs text-error" aria-live="polite"></p>
+        </div>
+        <div class="grid gap-1.5">
+          <label for="login-password" class="text-[13px] font-bold">Password</label>
+          <input id="login-password" name="password" type="password" value="hotline2026" required autocomplete="current-password" aria-describedby="login-password-error" class="input w-full" />
+          <p id="login-password-error" class="text-xs text-error" aria-live="polite"></p>
+        </div>
+        <div id="login-error" role="alert" class="alert alert-error alert-soft" hidden></div>
+        <button type="submit" class="btn btn-primary h-auto rounded-[10px] py-3.5">Masuk</button>
+      </form>
+    </section>
+
+    <!-- Agen: Dasbor -->
+    <section id="view-dashboard" data-view="dashboard" hidden aria-labelledby="dash-title" class="mx-auto grid max-w-7xl gap-5 p-4 md:p-7">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h1 id="dash-title" class="text-[26px] font-extrabold tracking-tight">Dasbor hotline</h1>
+        <span class="rounded-[10px] border border-base-content/20 bg-base-100 px-3.5 py-2.5 text-[13px] font-bold">1 April – 30 September 2026 ▾</span>
+      </div>
+      <div id="dash-loading" class="grid gap-4" hidden>
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div class="skeleton h-24"></div><div class="skeleton h-24"></div><div class="skeleton h-24"></div><div class="skeleton h-24"></div>
+        </div>
+        <div class="skeleton h-64"></div>
+      </div>
+      <div id="dash-error" role="alert" class="alert alert-error alert-soft" hidden>
+        <span data-slot="message">Gagal memuat dasbor.</span>
+        <button type="button" class="btn btn-sm" data-retry="dashboard">Coba lagi</button>
+      </div>
+      <div id="dash-content" class="grid gap-5" hidden>
+        <ul id="kpi-list" class="grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-4"></ul>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-4">
+          <figure class="rounded-2xl border border-base-300 bg-base-100 p-5">
+            <figcaption class="mb-4 flex flex-wrap justify-between gap-2">
+              <b>Tiket masuk vs selesai per bulan</b>
+              <span class="flex gap-3 text-xs"><span class="text-primary">■ Masuk</span><span class="text-info-bright">■ Selesai</span></span>
+            </figcaption>
+            <ol id="month-chart" class="grid h-50 grid-cols-6 items-end gap-2 md:gap-4"></ol>
+          </figure>
+          <figure class="rounded-2xl border border-base-300 bg-base-100 p-5">
+            <figcaption class="mb-3.5 font-bold">Tiket per kategori</figcaption>
+            <ul id="category-chart" class="grid gap-2.5"></ul>
+          </figure>
+        </div>
+        <div class="overflow-auto rounded-2xl border border-base-300 bg-base-100">
+          <h2 class="border-b border-base-200 px-5 py-4 font-bold">Kinerja petugas</h2>
+          <table class="w-full min-w-225 text-left text-[13px]">
+            <thead class="bg-base-200/50 text-xs font-bold text-base-content/60">
+              <tr><th scope="col" class="px-5 py-2.5">Petugas</th><th scope="col" class="px-3 py-2.5">Ditangani</th><th scope="col" class="px-3 py-2.5">Selesai</th><th scope="col" class="px-3 py-2.5">Rata-rata respons pertama</th><th scope="col" class="px-3 py-2.5">Rata-rata penyelesaian</th></tr>
+            </thead>
+            <tbody id="agent-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast toast-end toast-bottom z-banner" aria-live="polite"></div>
+
+  <template id="tpl-ticket">
+    <li>
+      <button type="button" class="relative grid w-full cursor-pointer gap-1.25 border-b border-base-200 px-4 py-3.5 text-left hover:bg-base-200">
+        <span data-role="bar" aria-hidden="true" class="absolute inset-y-0 left-0 w-0.75 bg-secondary" hidden></span>
+        <span class="flex justify-between gap-2 text-xs"><b class="font-mono" data-slot="no"></b><span data-role="badge"></span></span>
+        <span class="text-sm font-semibold leading-snug" data-slot="judul"></span>
+        <span class="flex justify-between gap-2 text-xs text-base-content/60"><span data-slot="sub"></span><span class="whitespace-nowrap" data-slot="tgl"></span></span>
+        <span data-role="locked" class="text-[11px] font-bold text-warning" hidden>🔒 Sedang ditangani <span data-slot="lock"></span></span>
+      </button>
+    </li>
+  </template>
+
+  <template id="tpl-message">
+    <li class="grid gap-1">
+      <p class="text-[11px] text-base-content/60"><span data-slot="from"></span> · <span data-slot="time"></span></p>
+      <p data-role="bubble" class="max-w-140 whitespace-pre-line rounded-2xl border px-3.5 py-3 text-sm leading-relaxed" data-slot="text"></p>
+      <div data-role="file" hidden class="flex items-center gap-2.5 rounded-[10px] border border-base-300 bg-base-100 px-3 py-2.5 text-[13px]">
+        <span class="grid size-8 place-items-center rounded-md bg-info/10 text-[11px] font-extrabold text-secondary" data-slot="ext"></span>
+        <span><b class="block" data-slot="file"></b><span class="text-[11px] text-base-content/60" data-slot="size"></span></span>
+      </div>
+    </li>
+  </template>
+
+  <script type="module" src="js/pages/hotline.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"name":"tka-online-uiux","private":true,"type":"module","scripts":{"openapi":"node scripts/generate-openapi.js","test:contract":"node --test test/contract/*.test.js"}}

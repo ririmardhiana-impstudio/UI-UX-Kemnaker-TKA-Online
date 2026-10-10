@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="tka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda — TKA Online</title>
+  <link rel="icon" href="uploads/kemnaker_new.svg" type="image/svg+xml" />
+  <meta name="description" content="Pelayanan penggunaan Tenaga Kerja Asing secara daring — Kementerian Ketenagakerjaan RI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/daisyui.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/themes.css" rel="stylesheet" type="text/css" />
+  <link href="css/tokens.css" rel="stylesheet" type="text/css" />
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <meta name="use-mock" content="true" />
+  <meta name="api-base-url" content="/api/v1" />
+  <script>window.USE_MOCK = document.querySelector('meta[name="use-mock"]')?.content === 'true'; window.API_BASE_URL = document.querySelector('meta[name="api-base-url"]')?.content ?? '/api/v1';</script>
+  <script type="module" src="js/api/client.js"></script>
+  <script type="module" src="js/prototype-banner.js"></script>
+</head>
+<body class="bg-base-100 text-base-content">
+  <a href="#konten" class="skip-link" data-testid="landing-link-skip">Lewati ke konten</a>
+
+  <!-- Bilah situs resmi -->
+  <div class="bg-primary text-xs text-primary-content/80">
+    <div class="mx-auto flex max-w-7xl flex-wrap justify-between gap-4 px-4 py-2 md:px-8">
+      <span>Situs resmi Kementerian Ketenagakerjaan Republik Indonesia</span>
+      <div class="flex flex-wrap gap-5">
+        <span>WhatsApp 0811 1380 1443</span>
+        <span>user.pptka@kemnaker.go.id</span>
+        <span class="flex gap-2" aria-label="Bahasa: Indonesia"><b class="text-primary-content">ID</b><span lang="en">EN</span></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-sticky border-b border-base-300 bg-base-100/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 px-4 py-3.5 md:px-8">
+      <a href="landing.html" class="flex items-center gap-3 text-base-content" data-testid="landing-link-home">
+        <img src="uploads/kemnaker_new.svg" alt="Logo Kementerian Ketenagakerjaan" width="44" height="43" class="h-11 w-11 object-contain" />
+        <span class="grid">
+          <span class="text-[17px] font-extrabold tracking-tight">TKA Online</span>
+          <span class="text-[11px] text-base-content/70">Kementerian Ketenagakerjaan RI</span>
+        </span>
+      </a>
+      <nav aria-label="Navigasi utama" class="order-last flex w-full flex-wrap gap-x-6 gap-y-2 text-sm font-medium xl:order-none xl:w-auto">
+        <a href="landing.html" aria-current="page" class="font-bold text-primary" data-testid="landing-nav-beranda">Beranda</a>
+        <a href="#informasi" class="text-base-content/80 hover:text-primary" data-testid="landing-nav-informasi">Informasi</a>
+        <a href="#peraturan" class="text-base-content/80 hover:text-primary" data-testid="landing-nav-peraturan">Peraturan</a>
+        <a href="#alur" class="text-base-content/80 hover:text-primary" data-testid="landing-nav-alur">Alur Proses</a>
+        <a href="#persyaratan" class="text-base-content/80 hover:text-primary" data-testid="landing-nav-persyaratan">Persyaratan</a>
+        <a href="#faq" class="text-base-content/80 hover:text-primary" data-testid="landing-nav-faq">Pertanyaan Umum</a>
+        <a href="portal-pemberi-kerja.html" class="text-base-content/80 hover:text-primary" data-testid="landing-nav-laporan">Laporan TKA</a>
+      </nav>
+      <a href="#persyaratan" class="btn btn-outline rounded-lg border-base-content/20 font-semibold" data-testid="landing-link-buku-panduan">Buku Panduan</a>
+    </div>
+  </header>
+
+  <aside aria-label="Pengumuman" class="border-b border-warning/30 bg-warning/10">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center gap-3.5 px-4 py-3 text-sm text-warning md:px-8">
+      <span class="badge badge-sm badge-highlight rounded-[5px] text-[11px] font-extrabold tracking-[.08em]">PENGUMUMAN</span>
+      <p class="min-w-0 flex-1 basis-72">Mulai 8 Desember 2025, permohonan akun, penonaktifan akun, dan pembatalan HPK/RPTKA dilayani melalui <b>user.pptka@kemnaker.go.id</b>. Email lama pptka.contact@gmail.com tidak lagi menerima layanan.</p>
+      <a href="#informasi" class="font-bold text-warning hover:underline" data-testid="landing-link-pengumuman-selengkapnya">Selengkapnya →</a>
+    </div>
+  </aside>
+
+  <main id="konten">
+    <!-- Hero -->
+    <section aria-labelledby="hero-title" class="bg-linear-to-b from-base-200 to-base-100">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-12 pb-16 md:px-8 lg:grid-cols-2 lg:gap-16 lg:pt-18 lg:pb-22">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full bg-info/10 px-3 py-1.5 text-xs font-semibold text-secondary"><span aria-hidden="true">●</span> Direktorat Pengendalian Penggunaan TKA</p>
+          <h1 id="hero-title" class="mt-5 mb-4.5 text-4xl leading-[1.06] font-extrabold tracking-tight text-balance md:text-5xl lg:text-[54px]">Pelayanan penggunaan Tenaga Kerja Asing, sepenuhnya daring.</h1>
+          <p class="mb-8 max-w-[560px] text-lg leading-relaxed text-pretty text-base-content/70">Ajukan pengesahan RPTKA, perpanjangan, dan perubahan, lalu bayar DKPTKA — semua melalui satu sistem resmi Kementerian Ketenagakerjaan.</p>
+          <div class="mb-9 flex flex-wrap gap-3">
+            <a href="#alur" class="btn btn-primary btn-lg rounded-[10px] text-[15px] font-bold" data-testid="landing-link-alur">Lihat alur proses →</a>
+            <a href="#persyaratan" class="btn btn-outline btn-lg rounded-[10px] border-base-content/20 text-[15px] font-semibold text-base-content" data-testid="landing-link-persyaratan">Persyaratan dokumen</a>
+          </div>
+          <ul class="flex flex-wrap gap-7 text-sm text-base-content/80">
+            <li class="flex items-center gap-2"><span aria-hidden="true" class="grid size-4.5 place-items-center rounded-full bg-info/10 text-[11px] text-secondary">✓</span>Tanpa antre</li>
+            <li class="flex items-center gap-2"><span aria-hidden="true" class="grid size-4.5 place-items-center rounded-full bg-info/10 text-[11px] text-secondary">✓</span>Status dapat dipantau</li>
+            <li class="flex items-center gap-2"><span aria-hidden="true" class="grid size-4.5 place-items-center rounded-full bg-info/10 text-[11px] text-secondary">✓</span>Pengesahan elektronik</li>
+          </ul>
+        </div>
+
+        <!-- Kartu Masuk / Cek status -->
+        <div id="cek-status" class="w-full max-w-[480px] justify-self-center overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-2xl shadow-primary/30 lg:justify-self-end">
+          <div role="tablist" aria-label="Akses cepat" class="grid grid-cols-2 border-b border-base-300 text-sm font-bold">
+            <button type="button" role="tab" id="tab-login" aria-controls="panel-login" aria-selected="true" data-tab="login"
+                    class="-mb-px border-b-2 p-4 text-center" data-testid="landing-tab-login">Masuk</button>
+            <button type="button" role="tab" id="tab-status" aria-controls="panel-status" aria-selected="false" tabindex="-1" data-tab="status"
+                    class="-mb-px border-b-2 p-4 text-center" data-testid="landing-tab-status">Cek status</button>
+          </div>
+
+          <form id="panel-login" role="tabpanel" aria-labelledby="tab-login" action="akun-login.html" method="get" class="px-6 pt-7 pb-7.5 md:px-8" data-testid="landing-form-login">
+            <label for="login-username" class="mb-1.5 block text-[13px] font-bold">Username</label>
+            <input id="login-username" type="text" autocomplete="username" placeholder="Username pemberi kerja"
+                   class="input mb-3.5 h-12 w-full rounded-[10px] text-[15px]" data-testid="landing-input-username" />
+            <div class="mb-1.5 flex justify-between text-[13px]">
+              <label for="login-password" class="font-bold">Kata sandi</label>
+              <a href="#kontak" class="font-bold text-secondary hover:text-primary" data-testid="landing-link-lupa-sandi">Lupa kata sandi?</a>
+            </div>
+            <input id="login-password" type="password" autocomplete="current-password" placeholder="••••••••"
+                   class="input mb-3.5 h-12 w-full rounded-[10px] text-[15px]" data-testid="landing-input-password" />
+            <label for="login-captcha" class="mb-1.5 block text-[13px] font-bold">Kode keamanan</label>
+            <div class="mb-5.5 grid grid-cols-[130px_1fr] gap-2">
+              <span role="img" aria-label="Kode keamanan: 7 K 4 Q 2"
+                    class="grid place-items-center rounded-[10px] bg-[repeating-linear-gradient(-20deg,var(--color-base-200)_0_5px,var(--color-base-300)_5px_10px)] font-mono text-lg font-bold italic tracking-[.2em] text-base-content/80">7K4Q2</span>
+              <input id="login-captcha" type="text" autocomplete="off" placeholder="Ketik kode"
+                     class="input h-12 w-full rounded-[10px] text-[15px]" data-testid="landing-input-captcha" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg w-full rounded-[10px] text-base font-bold" data-testid="landing-btn-login">Masuk</button>
+            <p class="mt-4 text-center text-[13px] leading-normal text-base-content/70">Belum punya akun? <a href="akun-login.html" class="font-bold text-secondary hover:text-primary" data-testid="landing-link-daftar">Daftar pemberi kerja</a> atau ajukan melalui<br /><a href="#kontak" class="font-bold text-secondary hover:text-primary" data-testid="landing-link-email-akun">user.pptka@kemnaker.go.id</a></p>
+          </form>
+
+          <form id="panel-status" role="tabpanel" aria-labelledby="tab-status" hidden novalidate class="px-6 pt-7 pb-7.5 md:px-8" data-testid="landing-form-status">
+            <p class="mb-4.5 text-sm leading-normal text-base-content/70">Pantau permohonan tanpa masuk akun.</p>
+            <fieldset class="mb-3.5">
+              <legend class="mb-1.5 text-[13px] font-bold">Jenis dokumen</legend>
+              <div class="tabs tabs-box flex rounded-[10px] bg-base-200 p-1 text-[13px] font-semibold">
+                <input type="radio" name="jenis" value="rptka" class="tab flex-1" aria-label="RPTKA" checked data-testid="landing-radio-jenis-rptka" />
+                <input type="radio" name="jenis" value="hpk" class="tab flex-1" aria-label="HPK" data-testid="landing-radio-jenis-hpk" />
+                <input type="radio" name="jenis" value="billing" class="tab flex-1" aria-label="Billing DKPTKA" data-testid="landing-radio-jenis-billing" />
+                <input type="radio" name="jenis" value="pendaftaran" class="tab flex-1" aria-label="Registrasi" data-testid="landing-radio-jenis-pendaftaran" />
+              </div>
+            </fieldset>
+            <label for="status-nomor" id="status-nomor-label" class="mb-1.5 block text-[13px] font-bold">Nomor permohonan</label>
+            <input id="status-nomor" name="nomor" type="text" required maxlength="40" placeholder="Masukkan nomor"
+                   aria-describedby="status-nomor-error" class="input h-12 w-full rounded-[10px] text-[15px]" data-testid="landing-input-nomor" />
+            <p id="status-nomor-error" role="alert" class="mt-1.5 text-[13px] text-error" hidden></p>
+            <button type="submit" class="btn btn-secondary btn-lg mt-5.5 w-full rounded-[10px] text-base font-bold" data-testid="landing-btn-cek-status">Cek Status</button>
+            <div id="status-result" role="status" aria-live="polite" class="alert alert-info alert-soft mt-4 text-[13px]" hidden></div>
+            <p class="mt-4.5 border-t border-dashed border-base-300 pt-4 text-[13px] leading-normal text-base-content/70">Kendala data? Hubungi WhatsApp <b class="text-base-content">0811 1380 1443</b></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jenis pelayanan -->
+    <section id="informasi" aria-labelledby="informasi-title" class="mx-auto max-w-7xl scroll-mt-20 px-4 py-16 md:px-8 lg:py-20">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-[13px] font-bold tracking-[.08em] text-secondary">JENIS PELAYANAN</p>
+          <h2 id="informasi-title" class="mt-2 text-3xl font-bold tracking-tight lg:text-[34px]">Apa yang ingin Anda urus?</h2>
+        </div>
+        <p class="max-w-[420px] text-sm text-base-content/70">Pilih jenis pengesahan sesuai kebutuhan. Setiap jenis memiliki alur dan persyaratan berbeda.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul id="service-list" class="contents"></ul>
+        <a href="portal-pemberi-kerja.html" class="flex flex-col justify-center gap-2 rounded-[14px] border border-dashed border-base-content/20 bg-base-200 p-6 text-base-content" data-testid="landing-link-laporan-tka">
+          <span class="text-[17px] font-bold">Laporan TKA</span>
+          <span class="text-sm leading-normal text-base-content/70">Pelaporan penggunaan TKA oleh pemberi kerja secara berkala.</span>
+          <span class="pt-2 text-[13px] font-bold text-secondary">Buka Laporan TKA →</span>
+        </a>
+      </div>
+      <template id="service-card-template">
+        <li>
+          <button type="button" data-testid="landing-btn-service"
+                  class="flex h-full w-full cursor-pointer flex-col gap-2 rounded-[14px] border border-base-300 bg-base-100 p-6 text-left transition hover:border-secondary hover:shadow-lg hover:shadow-secondary/20">
+            <span class="mb-3 flex w-full items-center justify-between">
+              <span data-slot="code" aria-hidden="true" class="grid size-10 place-items-center rounded-[10px] bg-info/10 text-sm font-extrabold text-secondary"></span>
+              <span data-slot="tag" class="badge badge-soft badge-sm rounded-full text-[11px] font-bold"></span>
+            </span>
+            <span data-slot="name" class="text-[17px] leading-snug font-bold"></span>
+            <span data-slot="desc" class="text-sm leading-normal text-base-content/70"></span>
+            <span aria-hidden="true" class="mt-auto pt-2 text-[13px] font-bold text-secondary">Lihat alur →</span>
+          </button>
+        </li>
+      </template>
+    </section>
+
+    <!-- Alur proses -->
+    <section id="alur" aria-labelledby="alur-title" class="scroll-mt-20 bg-primary text-primary-content">
+      <div class="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:py-20">
+        <p class="text-[13px] font-bold tracking-[.08em] text-info-bright">ALUR PROSES</p>
+        <h2 id="alur-title" class="mt-2 mb-7 text-3xl font-bold tracking-tight lg:text-[34px]" aria-live="polite">Tahapan pelayanan: <span id="alur-active-name"></span></h2>
+        <ul id="service-chips" aria-label="Pilih jenis pelayanan" class="mb-11 flex flex-wrap gap-2"></ul>
+        <ol id="alur-steps" class="grid gap-y-6 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none"></ol>
+        <p id="alur-note" class="mt-11 rounded-xl border border-primary-content/10 bg-primary-content/10 px-5.5 py-4.5 text-sm leading-relaxed text-primary-content/80"></p>
+      </div>
+      <template id="service-chip-template">
+        <li>
+          <button type="button" aria-pressed="false" data-testid="landing-btn-chip"
+                  class="cursor-pointer rounded-full border px-3.5 py-2 text-[13px] font-semibold transition-colors"></button>
+        </li>
+      </template>
+      <template id="alur-step-template">
+        <li class="border-t-2 pt-5 pr-6">
+          <span data-slot="no" class="text-[13px] font-bold text-info-bright"></span>
+          <h3 data-slot="title" class="my-1.5 text-[17px] font-bold"></h3>
+          <p data-slot="desc" class="text-sm leading-relaxed text-primary-content/70"></p>
+        </li>
+      </template>
+    </section>
+
+    <!-- Persyaratan & peraturan -->
+    <div class="mx-auto grid max-w-7xl gap-6 px-4 py-16 md:px-8 lg:grid-cols-2 lg:py-20">
+      <section id="persyaratan" aria-labelledby="persyaratan-title" class="scroll-mt-20 rounded-2xl bg-base-200 p-6 md:p-8">
+        <p class="text-[13px] font-bold tracking-[.08em] text-secondary">PERSYARATAN</p>
+        <h2 id="persyaratan-title" class="mt-2 mb-3 text-2xl font-bold tracking-tight">Siapkan sebelum mengajukan</h2>
+        <p class="mb-5 text-sm leading-relaxed text-base-content/70">Daftar lengkap berbeda untuk tiap jenis pengesahan. Unduh buku panduan untuk rincian per layanan.</p>
+        <ol class="grid gap-2.5 text-sm text-base-content/80">
+          <li class="flex gap-2.5 rounded-[10px] border border-base-300 bg-base-100 px-3.5 py-3"><span class="font-bold text-secondary">01</span>Akun pemberi kerja TKA yang telah terverifikasi</li>
+          <li class="flex gap-2.5 rounded-[10px] border border-base-300 bg-base-100 px-3.5 py-3"><span class="font-bold text-secondary">02</span>Data jabatan, jangka waktu, dan lokasi kerja TKA</li>
+          <li class="flex gap-2.5 rounded-[10px] border border-base-300 bg-base-100 px-3.5 py-3"><span class="font-bold text-secondary">03</span>Identitas TKA: paspor, pas foto, dan riwayat pendidikan/kerja</li>
+          <li class="flex gap-2.5 rounded-[10px] border border-base-300 bg-base-100 px-3.5 py-3"><span class="font-bold text-secondary">04</span>NPWP pemberi kerja yang masih berlaku</li>
+        </ol>
+        <div class="mt-5 flex flex-wrap gap-2.5 text-sm font-semibold">
+          <span class="rounded-lg bg-primary px-4 py-2.5 text-primary-content">Unduh Buku Panduan</span>
+          <span class="rounded-lg border border-base-content/20 bg-base-100 px-4 py-2.5">Persyaratan per layanan</span>
+        </div>
+      </section>
+
+      <section id="peraturan" aria-labelledby="peraturan-title" class="scroll-mt-20 rounded-2xl border border-base-300 p-6 md:p-8">
+        <p class="text-[13px] font-bold tracking-[.08em] text-secondary">PERATURAN</p>
+        <h2 id="peraturan-title" class="mt-2 mb-5 text-2xl font-bold tracking-tight">Dasar hukum</h2>
+        <ul class="divide-y divide-base-300 text-sm">
+          <li class="flex justify-between gap-4 py-4"><span><b class="mb-0.5 block">PP No. 34 Tahun 2021</b><span class="text-base-content/70">Penggunaan Tenaga Kerja Asing</span></span><span class="shrink-0 font-bold text-secondary">PDF ↓</span></li>
+          <li class="flex justify-between gap-4 py-4"><span><b class="mb-0.5 block">Permenaker No. 8 Tahun 2021</b><span class="text-base-content/70">Pelaksanaan PP 34/2021 tentang Penggunaan TKA</span></span><span class="shrink-0 font-bold text-secondary">PDF ↓</span></li>
+          <li class="flex justify-between gap-4 py-4"><span><b class="mb-0.5 block">Peraturan lainnya</b><span class="text-base-content/70">Undang-undang, keputusan, dan surat edaran terkait</span></span><span class="shrink-0 font-bold text-secondary">Lihat →</span></li>
+        </ul>
+        <p class="mt-5 rounded-[10px] bg-warning/10 px-4.5 py-4 text-[13px] leading-normal text-warning"><b>Catatan:</b> Izin kerja TKA cukup dengan pengesahan RPTKA — IMTA sudah tidak berlaku.</p>
+      </section>
+    </div>
+
+    <!-- Pengumuman -->
+    <section aria-labelledby="pengumuman-title" class="bg-base-200">
+      <div class="mx-auto max-w-7xl px-4 py-16 md:px-8 lg:py-20">
+        <div class="mb-7 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-[13px] font-bold tracking-[.08em] text-secondary">PENGUMUMAN</p>
+            <h2 id="pengumuman-title" class="mt-2 text-3xl font-bold tracking-tight lg:text-[34px]">Informasi terbaru</h2>
+          </div>
+          <button type="button" id="pengumuman-toggle" aria-expanded="false" aria-controls="pengumuman-list" hidden
+                  class="cursor-pointer text-sm font-semibold text-secondary hover:text-primary" data-testid="landing-btn-pengumuman-semua">Semua pengumuman →</button>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div id="pengumuman-region" aria-busy="true" aria-live="polite" class="contents">
+            <div id="pengumuman-loading" class="contents" data-testid="landing-loading-pengumuman">
+              <div class="skeleton h-52 rounded-[14px]"></div>
+              <div class="skeleton h-52 rounded-[14px]"></div>
+            </div>
+            <div id="pengumuman-error" role="alert" class="alert alert-error alert-soft md:col-span-2" hidden>
+              <span>Pengumuman gagal dimuat.</span>
+              <button type="button" id="pengumuman-retry" class="btn btn-sm" data-testid="landing-btn-pengumuman-retry">Coba lagi</button>
+            </div>
+            <ul id="pengumuman-list" class="contents"></ul>
+          </div>
+          <div class="flex flex-col gap-2.5 rounded-[14px] bg-primary p-7 text-primary-content">
+            <p class="text-xs font-bold tracking-[.08em] text-info-bright">DKPTKA</p>
+            <p class="text-[40px] leading-none font-extrabold tracking-tight">Rp1.500.000</p>
+            <p class="text-sm leading-relaxed text-primary-content/70">per bulan, per jabatan, per orang — dibayarkan melalui kode billing setelah notifikasi terbit.</p>
+          </div>
+        </div>
+      </div>
+      <template id="pengumuman-template">
+        <li>
+          <article class="flex h-full flex-col gap-2.5 rounded-[14px] border border-base-300 bg-base-100 p-7">
+            <p class="flex items-center gap-2.5 text-xs text-base-content/70">
+              <span data-slot="tag" class="badge badge-soft badge-sm rounded-full font-bold"></span>
+              <span data-slot="tgl"></span>
+            </p>
+            <h3 data-slot="judul" class="text-lg leading-snug font-bold"></h3>
+            <p data-slot="isi" class="text-sm leading-relaxed text-base-content/70"></p>
+            <a href="hotline.html" data-hotline-link hidden class="mt-auto text-sm font-bold text-secondary hover:text-primary" data-testid="landing-link-panduan-hotline">Panduan TKA Hotline →</a>
+          </article>
+        </li>
+      </template>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-title" class="mx-auto grid max-w-7xl scroll-mt-20 gap-12 px-4 py-16 md:px-8 lg:grid-cols-3 lg:py-20">
+      <div>
+        <p class="text-[13px] font-bold tracking-[.08em] text-secondary">PERTANYAAN UMUM</p>
+        <h2 id="faq-title" class="mt-2 mb-3 text-3xl font-bold tracking-tight lg:text-[34px]">Yang sering ditanyakan</h2>
+        <p class="text-[15px] leading-relaxed text-base-content/70">Tidak menemukan jawaban? Hubungi kanal bantuan di bawah.</p>
+      </div>
+      <div class="min-w-0 border-t border-base-300 lg:col-span-2">
+        <details name="faq" open class="collapse collapse-plus rounded-none border-b border-base-300">
+          <summary class="collapse-title px-0 py-5 text-base font-bold after:text-xl after:text-secondary" data-testid="landing-faq-1">Apakah IMTA masih diperlukan?</summary>
+          <div class="collapse-content px-0 pr-10 text-[15px] leading-relaxed text-base-content/70">Tidak. IMTA sudah dihapuskan. Izin kerja bagi pemberi kerja TKA cukup dengan pengesahan RPTKA.</div>
+        </details>
+        <details name="faq" class="collapse collapse-plus rounded-none border-b border-base-300">
+          <summary class="collapse-title px-0 py-5 text-base font-bold after:text-xl after:text-secondary" data-testid="landing-faq-2">Berapa besar DKPTKA yang harus dibayarkan?</summary>
+          <div class="collapse-content px-0 pr-10 text-[15px] leading-relaxed text-base-content/70">DKPTKA sebesar Rp1.500.000 per bulan, per jabatan, per orang. Pembayaran dilakukan melalui kode billing yang diterbitkan sistem.</div>
+        </details>
+        <details name="faq" class="collapse collapse-plus rounded-none border-b border-base-300">
+          <summary class="collapse-title px-0 py-5 text-base font-bold after:text-xl after:text-secondary" data-testid="landing-faq-3">Bagaimana cara mendapatkan username dan password?</summary>
+          <div class="collapse-content px-0 pr-10 text-[15px] leading-relaxed text-base-content/70">Ajukan permohonan akun melalui email user.pptka@kemnaker.go.id. Email pptka.contact@gmail.com tidak lagi melayani sejak 8 Desember 2025.</div>
+        </details>
+        <details name="faq" class="collapse collapse-plus rounded-none border-b border-base-300">
+          <summary class="collapse-title px-0 py-5 text-base font-bold after:text-xl after:text-secondary" data-testid="landing-faq-4">Ke mana mengajukan alih jabatan atau alih pemberi kerja (TA.03)?</summary>
+          <div class="collapse-content px-0 pr-10 text-[15px] leading-relaxed text-base-content/70">Kirim permohonan ke admin.pptka@kemnaker.go.id, termasuk untuk perubahan alamat, jenis usaha, dan lokasi kerja TKA.</div>
+        </details>
+        <details name="faq" class="collapse collapse-plus rounded-none border-b border-base-300">
+          <summary class="collapse-title px-0 py-5 text-base font-bold after:text-xl after:text-secondary" data-testid="landing-faq-5">Jabatan yang saya butuhkan tidak tersedia di sistem. Apa yang harus dilakukan?</summary>
+          <div class="collapse-content px-0 pr-10 text-[15px] leading-relaxed text-base-content/70">Laporkan melalui email user.pptka@kemnaker.go.id dengan menyertakan nama jabatan dan uraian tugasnya.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" aria-labelledby="kontak-title" class="mx-auto max-w-7xl scroll-mt-20 px-4 pb-16 md:px-8 lg:pb-20">
+      <div class="overflow-hidden rounded-[20px] border border-base-300">
+        <div class="flex flex-wrap items-end justify-between gap-4 border-b border-base-300 p-6 md:p-8">
+          <div>
+            <p class="text-[13px] font-bold tracking-[.08em] text-secondary">BANTUAN HOTLINE</p>
+            <h2 id="kontak-title" class="mt-2 text-[28px] font-bold tracking-tight">Hubungi kanal yang tepat</h2>
+          </div>
+          <p class="text-sm text-base-content/70">Melayani dengan sigap dan responsif adalah komitmen kami.</p>
+        </div>
+        <div class="grid md:grid-cols-3">
+          <div class="border-b border-base-300 px-6 py-7 md:border-r md:border-b-0 md:px-8">
+            <b class="text-[15px]">user.pptka@kemnaker.go.id</b>
+            <p class="mt-2.5 text-sm leading-[1.7] text-base-content/70">Username &amp; password akun · Penonaktifan akun · Pembatalan HPK/RPTKA · Revisi masa berlaku · Penambahan jangka waktu HPK · Update NPWP · Upload ulang foto TKA · Jabatan tidak tersedia</p>
+          </div>
+          <div class="border-b border-base-300 px-6 py-7 md:border-r md:border-b-0 md:px-8">
+            <b class="text-[15px]">admin.pptka@kemnaker.go.id</b>
+            <p class="mt-2.5 text-sm leading-[1.7] text-base-content/70">Pengurusan TA.03 (alih jabatan / alih pemberi kerja) · Alamat &amp; jenis usaha pemberi kerja · Perubahan lokasi kerja TKA</p>
+          </div>
+          <div class="bg-base-200 px-6 py-7 md:px-8">
+            <b class="text-[15px]">WhatsApp 0811 1380 1443</b>
+            <p class="mt-2.5 text-sm leading-[1.7] text-base-content/70">Informasi dan pengaduan umum seputar layanan TKA Online.</p>
+            <a href="https://wa.me/6281113801443" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-3.5 rounded-lg font-semibold" data-testid="landing-link-whatsapp">Chat sekarang</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-primary text-primary-content/70">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 pt-14 pb-8 text-sm leading-[1.7] md:grid-cols-2 md:px-8 lg:grid-cols-4">
+      <div class="min-w-0 md:col-span-2">
+        <div class="mb-4 flex items-center gap-3">
+          <span class="grid rounded-[10px] bg-base-100 p-1.5">
+            <img src="uploads/kemnaker_new.svg" alt="Logo Kementerian Ketenagakerjaan" width="36" height="35" class="h-9 w-9 object-contain" />
+          </span>
+          <span class="grid leading-snug">
+            <span class="text-base font-extrabold text-primary-content">Kementerian Ketenagakerjaan R.I.</span>
+            <span class="text-xs">Ditjen Binapentasker</span>
+          </span>
+        </div>
+        <address class="not-italic">Direktorat Jenderal Pembinaan Penempatan Tenaga Kerja dan Perluasan Kesempatan Kerja<br />Jl. Jenderal Gatot Subroto Kav. 51, Jakarta Selatan</address>
+      </div>
+      <div>
+        <p class="mb-2.5 font-bold text-primary-content">Kontak</p>
+        Telp. 021-5255733<br />Fax. 021-5227588<br />user.pptka@kemnaker.go.id
+      </div>
+      <nav aria-label="Tautan footer">
+        <p class="mb-2.5 font-bold text-primary-content">Tautan</p>
+        <ul>
+          <li><a href="#informasi" class="hover:text-primary-content" data-testid="landing-footer-informasi">Informasi</a></li>
+          <li><a href="#peraturan" class="hover:text-primary-content" data-testid="landing-footer-peraturan">Peraturan</a></li>
+          <li><a href="#alur" class="hover:text-primary-content" data-testid="landing-footer-alur">Alur Proses</a></li>
+          <li><a href="portal-pemberi-kerja.html" class="hover:text-primary-content" data-testid="landing-footer-laporan">Laporan TKA</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mx-auto flex max-w-7xl flex-wrap justify-between gap-4 border-t border-primary-content/10 px-4 py-5 text-[13px] md:px-8">
+      <span>© 2026 Kementerian Ketenagakerjaan Republik Indonesia</span>
+      <span>Kebijakan Privasi · Syarat Penggunaan</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/pages/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="tka-office">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Back Office Petugas — TKA Online</title>
+  <link rel="icon" href="uploads/kemnaker_new.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/daisyui.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/themes.css" rel="stylesheet" type="text/css" />
+  <link href="css/tokens.css" rel="stylesheet" type="text/css" />
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5/dist/chart.umd.min.js"></script>
+  <meta name="use-mock" content="true" />
+  <meta name="api-base-url" content="/api/v1" />
+  <script>window.USE_MOCK = document.querySelector('meta[name="use-mock"]')?.content === 'true'; window.API_BASE_URL = document.querySelector('meta[name="api-base-url"]')?.content ?? '/api/v1';</script>
+  <script type="module" src="js/api/client.js"></script>
+  <script type="module" src="js/prototype-banner.js"></script>
+</head>
+<body class="bg-base-200 text-base-content">
+  <a href="#main" class="skip-link" data-testid="back-office-link-skip">Lewati ke konten</a>
+
+  <div class="flex min-h-screen flex-col lg:flex-row">
+    <!-- Sidebar: demo role picker + role menu -->
+    <aside class="flex flex-none flex-col bg-primary text-sm text-primary-content/80 lg:sticky lg:top-0 lg:h-screen lg:w-65 lg:overflow-auto" aria-label="Navigasi back office">
+      <div id="brand" class="p-5 text-primary-content"></div>
+
+      <h2 id="roles-heading" class="px-5 pb-2 text-[10px] font-extrabold tracking-widest text-primary-content/60">MASUK SEBAGAI (DEMO)</h2>
+      <nav aria-labelledby="roles-heading">
+        <ul id="role-list" class="grid gap-0.5 px-2.5 text-[13px]"></ul>
+      </nav>
+
+      <h2 id="menu-heading" class="px-5 pb-2 pt-4 text-[10px] font-extrabold tracking-widest text-primary-content/60">MENU</h2>
+      <nav aria-labelledby="menu-heading">
+        <ul id="menu-list" class="grid gap-0.5 px-2.5 text-[13px]"></ul>
+      </nav>
+
+      <div class="mt-auto border-t border-primary-content/10 px-5 py-4 text-xs leading-normal">
+        <b id="me-nama" class="block text-primary-content"></b>
+        <span id="me-jab" class="text-primary-content/70"></span>
+      </div>
+    </aside>
+
+    <main id="main" class="min-w-0 flex-1" tabindex="-1">
+      <div role="note" class="rounded-none border-b border-warning/30 bg-warning/10 px-7 py-2.5 text-xs">
+        <details>
+          <summary class="cursor-pointer font-semibold">Usulan desain — rantai persetujuan &amp; modul baru menunggu konfirmasi Direktorat PPTKA. <span class="text-secondary underline">Lihat rincian</span></summary>
+          <p class="mt-1.5 max-w-5xl leading-relaxed text-base-content/80">Layar back-office belum pernah teramati; disusun dari tahap riwayat status dan kebutuhan KAK Modul 5. Rantai persetujuan Gabungan [I]: Verifikator → Validator (Kasi/Subkoordinator) → Petugas Ekspos → Kasubdit/Koordinator → Direktur → Direktur Jenderal (tahap akhir HPK &amp; Pengesahan; Perubahan berakhir di Direktur). Ekspos daring + BAP, anotasi dokumen, keputusan pencabutan, analitik, notifikasi, dan audit/keamanan adalah usulan.</p>
+        </details>
+      </div>
+
+      <div class="mx-auto grid max-w-[1320px] gap-5 p-4 md:p-7">
+        <!-- Loading / error state for the active page -->
+        <div id="page-loading" class="grid gap-4" aria-busy="true" hidden>
+          <span class="sr-only" role="status">Memuat data…</span>
+          <div class="skeleton h-8 w-72"></div>
+          <div class="grid grid-cols-2 gap-3.5 lg:grid-cols-4">
+            <div class="skeleton h-20"></div><div class="skeleton h-20"></div>
+            <div class="skeleton h-20"></div><div class="skeleton h-20"></div>
+          </div>
+          <div class="skeleton h-72"></div>
+        </div>
+        <div id="page-error" role="alert" class="alert alert-error alert-soft" hidden>
+          <span id="page-error-text">Data gagal dimuat.</span>
+          <button type="button" id="page-retry" class="btn btn-sm btn-error">Coba lagi</button>
+        </div>
+
+        <!-- Antrian -->
+        <section id="page-antrian" class="grid gap-5" aria-labelledby="antrian-title" hidden>
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p id="antrian-role" class="text-sm text-base-content/70"></p>
+              <h1 id="antrian-title" tabindex="-1" class="mt-1 text-2xl font-extrabold tracking-tight focus:outline-none md:text-[26px]"></h1>
+            </div>
+            <div class="flex flex-wrap gap-2 text-sm">
+              <label class="select select-sm h-9 w-auto bg-base-100">
+                <span class="label">Jenis:</span>
+                <select id="filter-jenis">
+                  <option value="">Semua</option>
+                </select>
+              </label>
+              <label class="select select-sm h-9 w-auto bg-base-100">
+                <span class="label">Urut:</span>
+                <select id="filter-urut">
+                  <option value="sla">SLA terdekat</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div id="queue-stats" class="grid grid-cols-2 gap-3.5 lg:grid-cols-4"></div>
+          <div class="overflow-hidden rounded-box border border-base-300 bg-base-100">
+            <div class="overflow-x-auto">
+              <table class="table min-w-[1040px] text-sm">
+                <thead class="bg-base-200/50 text-xs text-base-content/70">
+                  <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Jenis</th>
+                    <th scope="col">Pemohon</th>
+                    <th scope="col">Layanan / TKA</th>
+                    <th scope="col">Tahap</th>
+                    <th scope="col">SLA</th>
+                    <th scope="col"><span class="sr-only">Aksi</span></th>
+                  </tr>
+                </thead>
+                <tbody id="queue-body"></tbody>
+              </table>
+            </div>
+            <div id="queue-pager" class="border-t border-base-200"></div>
+            <p id="queue-empty" class="p-10 text-center text-sm text-base-content/70" hidden>Antrian kosong.</p>
+          </div>
+        </section>
+
+        <!-- Review -->
+        <section id="page-review" class="grid gap-5" aria-labelledby="review-title" hidden></section>
+
+        <!-- Ekspos -->
+        <section id="page-ekspos" class="grid gap-5" aria-labelledby="ekspos-title" hidden></section>
+
+        <!-- Tanda tangan direktur -->
+        <section id="page-ttd" class="grid gap-5" aria-labelledby="ttd-title" hidden></section>
+
+        <!-- Pemda -->
+        <section id="page-pemda" class="grid gap-5" aria-labelledby="pemda-title" hidden></section>
+
+        <!-- Verifikasi akun -->
+        <section id="page-akun" class="grid gap-5" aria-labelledby="akun-title" hidden></section>
+
+        <!-- Admin -->
+        <section id="page-admin" class="grid gap-5" aria-labelledby="admin-title" hidden></section>
+        <!-- Keputusan pencabutan (Direktur / Dirjen) -->
+        <section id="page-pencabutan" class="grid gap-5" aria-labelledby="pencabutan-title" hidden></section>
+        <!-- Analitik penggunaan TKA -->
+        <section id="page-analitik" class="grid gap-5" aria-labelledby="analitik-title" hidden></section>
+        <!-- Pengaturan notifikasi -->
+        <section id="page-notifikasi" class="grid gap-5" aria-labelledby="notifikasi-title" hidden></section>
+        <!-- Audit log -->
+        <section id="page-audit" class="grid gap-5" aria-labelledby="audit-title" hidden></section>
+        <!-- Peran & akses -->
+        <section id="page-akses" class="grid gap-5" aria-labelledby="akses-title" hidden></section>
+        <!-- Peringatan keamanan -->
+        <section id="page-keamanan" class="grid gap-5" aria-labelledby="keamanan-title" hidden></section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal tanda tangan elektronik -->
+  <dialog id="sign-modal" class="modal" aria-labelledby="sign-title">
+    <form id="sign-form" class="modal-box grid max-w-md gap-3.5 p-7" novalidate>
+      <h2 id="sign-title" class="text-lg font-bold">Tanda tangan elektronik</h2>
+      <p class="text-sm leading-relaxed text-base-content/80"><span id="sign-count"></span> dokumen akan ditandatangani dengan sertifikat elektronik atas nama Direktur Pengendalian Penggunaan TKA.</p>
+      <div class="grid gap-1.5">
+        <label for="sign-passphrase" class="text-sm font-bold">Passphrase</label>
+        <input id="sign-passphrase" name="passphrase" type="password" class="input w-full" value="prototipe1" required minlength="6" autocomplete="current-password" aria-describedby="sign-passphrase-error" />
+        <p id="sign-passphrase-error" class="text-xs text-error" aria-live="polite" hidden></p>
+      </div>
+      <div class="flex justify-end gap-2">
+        <button type="button" id="sign-cancel" class="btn">Batal</button>
+        <button type="submit" class="btn btn-primary">Tandatangani</button>
+      </div>
+    </form>
+    <form method="dialog" class="modal-backdrop"><button type="submit">Tutup</button></form>
+  </dialog>
+
+  <div id="toast" class="toast toast-end z-sticky" aria-live="polite" role="status"></div>
+
+  <script type="module" src="js/pages/back-office.js"></script>
+</body>
+</html>

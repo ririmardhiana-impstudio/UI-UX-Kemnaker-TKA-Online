@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="tka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semua Halaman per Role — TKA Online</title>
+  <link rel="icon" href="uploads/kemnaker_new.svg" type="image/svg+xml" />
+  <meta name="description" content="Katalog prototipe interaktif TKA Online per role." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/daisyui.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/themes.css" rel="stylesheet" type="text/css" />
+  <link href="css/tokens.css" rel="stylesheet" type="text/css" />
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <meta name="use-mock" content="true" />
+  <meta name="api-base-url" content="/api/v1" />
+  <script>window.USE_MOCK = document.querySelector('meta[name="use-mock"]')?.content === 'true'; window.API_BASE_URL = document.querySelector('meta[name="api-base-url"]')?.content ?? '/api/v1';</script>
+  <script type="module" src="js/api/client.js"></script>
+  <script type="module" src="js/prototype-banner.js"></script>
+</head>
+<body class="bg-base-200 text-base-content">
+  <a href="#konten" class="skip-link" data-testid="index-link-skip">Lewati ke konten</a>
+  <header class="bg-primary text-primary-content">
+    <div class="mx-auto max-w-[1200px] px-4 pt-12 pb-10 md:px-8">
+      <div class="mb-7 flex items-center gap-3">
+        <span class="grid rounded-[10px] bg-base-100 p-1.5">
+          <img src="uploads/kemnaker_new.svg" alt="Logo Kementerian Ketenagakerjaan"
+               width="34" height="33" class="h-8.5 w-8.5 object-contain" />
+        </span>
+        <b class="text-lg">TKA Online · Redesign</b>
+      </div>
+      <h1 class="mb-3 max-w-[760px] text-3xl font-extrabold tracking-tight md:text-[40px]">Semua halaman, per role</h1>
+      <p class="max-w-[760px] text-base leading-relaxed text-primary-content/70">Prototipe interaktif berdasarkan dokumen alur aplikasi dan menu per role. Semua memakai data bersama yang sama (PT Nusantara Baja Presisi, Yayasan Pelayanan Kasih Nusantara, Kantor Perwakilan OKTA) per 30 September 2026.</p>
+    </div>
+  </header>
+
+  <main id="konten" tabindex="-1" class="mx-auto grid max-w-[1200px] gap-4.5 p-4 md:grid-cols-2 md:p-8 lg:grid-cols-3">
+    <a href="landing.html" data-testid="index-link-landing"
+       class="grid content-start gap-2.5 rounded-2xl border border-base-300 bg-base-100 p-6 text-base-content transition-colors hover:border-secondary">
+      <span class="text-[11px] font-extrabold tracking-[.08em] text-secondary">ROLE 1 · PUBLIK</span>
+      <b class="text-[19px]">Landing page</b>
+      <span class="text-[13px] leading-relaxed text-base-content/70">Beranda · Informasi · Jenis pelayanan &amp; alur interaktif · Persyaratan · Peraturan · Pengumuman · FAQ · Bantuan Hotline</span>
+    </a>
+
+    <a href="akun-login.html" data-testid="index-link-akun-login"
+       class="grid content-start gap-2.5 rounded-2xl border border-base-300 bg-base-100 p-6 text-base-content transition-colors hover:border-secondary">
+      <span class="text-[11px] font-extrabold tracking-[.08em] text-secondary">ROLE 1–4 · AKUN</span>
+      <b class="text-[19px]">Akun &amp; Login</b>
+      <span class="text-[13px] leading-relaxed text-base-content/70">Cek sesi SIAPkerja · SSO belum aktif · Login (+reCAPTCHA) · Login gagal · Daftar 5 langkah · Verifikasi email (3 hasil) · Lupa/reset password · Wajib ganti password · Wajib verifikasi email · Pengumuman wajib baca · Sesi berakhir</span>
+    </a>
+
+    <a href="portal-pemberi-kerja.html" data-testid="index-link-portal"
+       class="grid content-start gap-2.5 rounded-2xl border border-base-300 bg-base-100 p-6 text-base-content transition-colors hover:border-secondary lg:row-span-2">
+      <span class="text-[11px] font-extrabold tracking-[.08em] text-secondary">ROLE 2 · 3 · 4 · PEMBERI KERJA</span>
+      <b class="text-[19px]">Portal Pemberi Kerja</b>
+      <span class="text-[13px] leading-relaxed text-base-content/70">Ganti role di bilah atas: <b class="text-base-content">Swasta</b> (HPK + DKPTKA), <b class="text-base-content">Lembaga</b> (HPK, bebas DKPTKA), <b class="text-base-content">Pemerintah/Intl</b> (tanpa HPK). Menu mengikuti daftar per role.</span>
+      <span class="text-[13px] leading-[1.7] text-base-content/80">• Beranda: jadwal ekspos, akan berakhir 30/60/90, billing<br />• Upload Dokumen Pengguna<br />• Daftar HPK &amp; Pengesahan per layanan<br />• Wizard permohonan HPK (varian per layanan)<br />• Daftar Pengesahan: kuota jabatan, Tambah Baru / Pemegang Izin Tinggal<br />• Form data calon TKA (4 langkah)<br />• Perpanjangan: pilih HPK → pilih TKA + prasyarat<br />• Pembayaran DKPTKA + surat tagihan, proses ulang billing<br />• Perubahan: daftar, tambah via barcode, dokumen, pengurus, pernyataan, SK<br />• Pencabutan · Start-up/Vokasi · Sisa RPTKA Lama · Sisa Notifikasi · Peralihan<br />• Laporan TKA: 4 laporan, isi, upload Excel, kirim<br />• Profil · Ganti password · Ganti email (OTP)<br />• Riwayat status, cetak HPK/SK</span>
+    </a>
+
+    <a href="hotline.html" data-testid="index-link-hotline"
+       class="grid content-start gap-2.5 rounded-2xl border border-base-300 bg-base-100 p-6 text-base-content transition-colors hover:border-secondary">
+      <span class="text-[11px] font-extrabold tracking-[.08em] text-secondary">ROLE 5 · 6 · HOTLINE</span>
+      <b class="text-[19px]">TKA Hotline</b>
+      <span class="text-[13px] leading-relaxed text-base-content/70">Pemberi kerja: profil pertama kali · tiket saya · buat tiket · percakapan · belum login. Agen: login · antrian + kunci tiket · balas/jawaban baku · tutup/buka kembali · dasbor kinerja.</span>
+    </a>
+
+    <a href="back-office.html" data-testid="index-link-back-office"
+       class="grid content-start gap-2.5 rounded-2xl border border-base-300 bg-base-100 p-6 text-base-content transition-colors hover:border-secondary">
+      <span class="text-[11px] font-extrabold tracking-[.08em] text-warning">ROLE 7 · INTERNAL (USULAN)</span>
+      <b class="text-[19px]">Back Office Petugas</b>
+      <span class="text-[13px] leading-relaxed text-base-content/70">Verifikator akun · Verifikator permohonan · Petugas ekspos (kalender + hasil/BAP) · Kasi/Subkoordinator · Kasubdit/Koordinator · Direktur (TTE massal) · Pejabat pemda · Admin (jabatan, dokumen, pengumuman, pengguna).</span>
+    </a>
+  </main>
+
+  <footer class="mx-auto max-w-[1200px] px-4 pb-12 text-[13px] leading-relaxed text-base-content/70 md:px-8">
+    Data bersama: <code class="font-mono">js/mocks/data.js</code> (disajikan lewat <code class="font-mono">/api/v1</code>)
+  </footer>
+</body>
+</html>

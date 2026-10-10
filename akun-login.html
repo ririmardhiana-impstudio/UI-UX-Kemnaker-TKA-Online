@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="tka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akun &amp; Login — TKA Online</title>
+  <link rel="icon" href="uploads/kemnaker_new.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/daisyui.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/themes.css" rel="stylesheet" type="text/css" />
+  <link href="css/tokens.css" rel="stylesheet" type="text/css" />
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <meta name="use-mock" content="true" />
+  <meta name="api-base-url" content="/api/v1" />
+  <script>window.USE_MOCK = document.querySelector('meta[name="use-mock"]')?.content === 'true'; window.API_BASE_URL = document.querySelector('meta[name="api-base-url"]')?.content ?? '/api/v1';</script>
+  <script type="module" src="js/api/client.js"></script>
+  <script type="module" src="js/prototype-banner.js"></script>
+</head>
+<body class="min-h-screen bg-base-200 text-base-content">
+  <a href="#konten" class="skip-link" data-testid="akun-login-link-skip">Lewati ke konten</a>
+  <div id="screen-switcher"></div>
+
+  <main id="konten" tabindex="-1" class="grid min-h-[calc(100vh-40px)] grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+    <!-- Panel kiri: dua lapis identitas -->
+    <section aria-labelledby="identity-title"
+             class="relative flex flex-col overflow-hidden bg-primary px-6 py-8 text-primary-content/90 sm:px-10 lg:px-14 lg:py-10">
+      <div aria-hidden="true"
+           class="absolute inset-0 [--grid-line:color-mix(in_oklab,var(--color-primary-content)_4%,transparent)] bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-size-[48px_48px]"></div>
+      <div id="brand" class="relative text-primary-content"></div>
+
+      <div class="relative mt-10 max-w-[460px] lg:mt-auto">
+        <p class="mb-3.5 text-xs font-bold tracking-[.08em] text-info-bright">SATU IDENTITAS SIAPKERJA</p>
+        <h1 id="identity-title" class="mb-4 text-3xl leading-[1.12] font-extrabold tracking-[-.02em] text-primary-content lg:text-4xl">Masuk dengan akun SIAPkerja Anda.</h1>
+        <p class="mb-7 text-[15px] leading-[1.65] text-primary-content/70">Satu akun SIAPkerja untuk semua layanan Kemnaker. Setelah masuk, pilih layanan "TKA - Online" di menu layanan untuk melanjutkan.</p>
+        <ol class="grid gap-2.5" aria-label="Status sesi">
+          <li class="flex items-center gap-3.5 rounded-xl border border-primary-content/10 bg-primary-content/10 px-4 py-3.5">
+            <span id="layer-1-dot" class="grid size-7.5 flex-none place-items-center rounded-full text-[13px] font-extrabold text-primary" aria-hidden="true">1</span>
+            <div><b class="text-sm">Sesi SIAPkerja</b><div class="text-xs text-primary-content/70">account.kemnaker.go.id</div></div>
+            <span id="layer-1-status" class="ml-auto text-xs font-bold"></span>
+          </li>
+          <li class="flex items-center gap-3.5 rounded-xl border border-primary-content/10 bg-primary-content/10 px-4 py-3.5">
+            <span id="layer-2-dot" class="grid size-7.5 flex-none place-items-center rounded-full text-[13px] font-extrabold text-primary" aria-hidden="true">2</span>
+            <div><b class="text-sm">Layanan TKA Online</b><div class="text-xs text-primary-content/70">Menu layanan</div></div>
+            <span id="layer-2-status" class="ml-auto text-xs font-bold"></span>
+          </li>
+        </ol>
+      </div>
+      <p class="relative mt-10 text-xs leading-relaxed text-primary-content/70">Bantuan: WhatsApp 0811 1380 1443 · user.pptka@kemnaker.go.id</p>
+    </section>
+
+    <!-- Panel kanan: layar akun -->
+    <div id="screen-column" class="relative flex flex-col items-center justify-center px-5 py-10 sm:px-8 lg:px-12">
+
+      <!-- Cek sesi SSO -->
+      <section data-screen-panel="ssoCheck" hidden class="w-full max-w-[440px] text-center" role="status">
+        <div class="mx-auto mb-6 size-12 animate-spin rounded-full border-4 border-info/20 border-t-(--color-secondary)" aria-hidden="true"></div>
+        <h2 data-screen-heading tabindex="-1" class="mb-2 text-xl font-extrabold">Memeriksa sesi SIAPkerja…</h2>
+        <p class="text-sm leading-relaxed text-base-content/70">Kami memastikan Anda sudah masuk di account.kemnaker.go.id sebelum membuka form login.</p>
+      </section>
+
+      <!-- SSO belum aktif -->
+      <section data-screen-panel="ssoRequired" hidden class="w-full max-w-[460px] rounded-2xl border border-base-300 bg-base-100 p-6 shadow-2xl sm:p-9">
+        <div class="mb-5 grid size-13 place-items-center rounded-[14px] bg-warning/10 text-2xl font-extrabold text-warning" aria-hidden="true">!</div>
+        <h2 data-screen-heading tabindex="-1" class="mb-2 text-2xl font-extrabold tracking-[-.02em]">Mohon login SIAPkerja terlebih dahulu</h2>
+        <p class="mb-6 text-[15px] leading-relaxed text-base-content/70">Sesi SIAPkerja Anda belum aktif. Setelah masuk, Anda akan dikembalikan ke halaman ini secara otomatis.</p>
+        <button type="button" data-go="login" class="btn btn-primary h-auto w-full rounded-[10px] py-[15px] text-[15px] font-bold">Masuk dengan SIAPkerja →</button>
+        <p class="mt-4 text-center text-[13px] text-base-content/70">Belum punya akun SIAPkerja? <a href="https://account.kemnaker.go.id" target="_blank" rel="noopener" class="link link-secondary font-semibold no-underline hover:underline">Daftar di account.kemnaker.go.id</a></p>
+      </section>
+
+      <!-- Login -->
+      <section data-screen-panel="login" hidden class="w-full max-w-[460px]">
+        <h2 data-screen-heading tabindex="-1" class="mb-1.5 text-[28px] font-extrabold tracking-[-.02em]">Masuk dengan SIAPkerja</h2>
+        <p class="mb-6 text-sm text-base-content/70">Gunakan akun SIAPkerja Anda untuk mengakses TKA Online dan layanan Kemnaker lainnya.</p>
+
+        <div id="sso-card" class="mb-6 flex items-center gap-3 rounded-xl bg-info/10 px-4 py-3.5" aria-live="polite">
+          <div id="sso-loading" class="flex w-full items-center gap-3" aria-busy="true">
+            <span class="skeleton size-9 shrink-0 rounded-full"></span>
+            <span class="grid flex-1 gap-1.5"><span class="skeleton h-3 w-28"></span><span class="skeleton h-4 w-40"></span></span>
+            <span class="sr-only">Memuat sesi SIAPkerja…</span>
+          </div>
+          <div id="sso-error" hidden class="flex w-full flex-wrap items-center gap-3 text-sm text-error">
+            <span class="flex-1">Sesi SIAPkerja gagal dimuat.</span>
+            <button type="button" id="sso-retry" class="btn btn-sm btn-outline btn-error">Coba lagi</button>
+          </div>
+          <div id="sso-ready" hidden class="flex w-full items-center gap-3">
+            <span id="sso-initials" class="grid size-9 shrink-0 place-items-center rounded-full bg-secondary text-[13px] font-extrabold text-secondary-content" aria-hidden="true"></span>
+            <div class="flex-1"><div class="text-xs text-base-content/80">Sesi SIAPkerja aktif</div><b id="sso-name" class="text-[15px]"></b></div>
+            <button type="button" data-go="ssoRequired" class="link link-secondary text-[13px] font-semibold no-underline hover:underline">Bukan Anda?</button>
+          </div>
+        </div>
+
+        <form id="login-form" data-prefix="login" novalidate class="grid gap-4">
+          <div id="login-alert" role="alert" hidden class="alert alert-error alert-soft text-sm"></div>
+          <div class="grid gap-1.5">
+            <label for="login-username" class="text-[13px] font-bold">Username SIAPkerja</label>
+            <input id="login-username" name="username" value="nbp.hrd" required maxlength="20" autocomplete="username"
+                   aria-describedby="login-username-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="login-username-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <div class="grid gap-1.5">
+            <div class="flex justify-between text-[13px]">
+              <label for="login-password" class="font-bold">Password SIAPkerja</label>
+              <button type="button" data-go="lupa" class="link link-secondary font-bold no-underline hover:underline">Lupa password?</button>
+            </div>
+            <input id="login-password" name="password" type="password" value="rahasia123" required maxlength="20" autocomplete="current-password"
+                   aria-describedby="login-password-help login-password-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <span id="login-password-help" class="text-xs text-base-content/60">Maksimal 20 karakter.</span>
+            <p id="login-password-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <div id="login-captcha" hidden class="grid gap-2">
+            <label class="flex cursor-pointer items-center gap-3.5 rounded-[10px] border border-base-content/20 bg-base-200/50 px-4 py-3.5">
+              <input id="login-captcha-check" name="captcha" type="checkbox" class="checkbox" aria-describedby="login-captcha-warning login-captcha-error" />
+              <span class="flex-1 text-sm">Saya bukan robot</span>
+              <span class="text-center text-[10px] leading-tight text-base-content/50">reCAPTCHA<br />Privasi · Persyaratan</span>
+            </label>
+            <p id="login-captcha-warning" class="text-xs text-warning">Terlalu banyak percobaan. Selesaikan verifikasi di atas untuk melanjutkan.</p>
+            <p id="login-captcha-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <button type="submit" class="btn btn-primary h-auto w-full rounded-[10px] py-[15px] text-[15px] font-bold">Masuk</button>
+        </form>
+        <div class="mt-5 flex justify-end text-[13px] text-base-content/70">
+          <button type="button" id="login-captcha-toggle" aria-controls="login-captcha" class="cursor-pointer text-base-content/50 hover:text-base-content/70"></button>
+        </div>
+
+        <div id="login-demo-accounts" class="mt-6 grid gap-2 rounded-xl border border-dashed border-info/40 bg-info/10 p-4">
+          <p class="text-[13px] font-bold text-base-content/80">Akun demo</p>
+          <button type="button" data-demo-login="nbp.hrd" data-demo-password="rahasia123"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-nbp-hrd">
+            <span class="min-w-0">
+              <b class="block text-[13px]">nbp.hrd <span class="font-normal text-base-content/60">· Rina Wulandari</span></b>
+              <span class="block text-xs text-base-content/60">Sudah terdaftar — langsung ke dashboard</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="nbp.daftar" data-demo-password="rahasia123"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-nbp-daftar">
+            <span class="min-w-0">
+              <b class="block text-[13px]">nbp.daftar <span class="font-normal text-base-content/60">· Rina Wulandari</span></b>
+              <span class="block text-xs text-base-content/60">Belum terdaftar — lanjut ke wizard registrasi</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="ypkn.admin" data-demo-password="rahasia123"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-ypkn-admin">
+            <span class="min-w-0">
+              <b class="block text-[13px]">ypkn.admin <span class="font-normal text-base-content/60">· Yohanes Sitompul</span></b>
+              <span class="block text-xs text-base-content/60">Lembaga (kelompok B) — langsung ke dashboard</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="okta.jkt" data-demo-password="rahasia123"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-okta-jkt">
+            <span class="min-w-0">
+              <b class="block text-[13px]">okta.jkt <span class="font-normal text-base-content/60">· Dewi Anggraini</span></b>
+              <span class="block text-xs text-base-content/60">Pemerintah / badan internasional (kelompok C) — langsung ke dashboard</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="verif.akun" data-demo-password="verifikator2026"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-verif-akun">
+            <span class="min-w-0">
+              <b class="block text-[13px]">verif.akun <span class="font-normal text-base-content/60">· Andika Pratama</span></b>
+              <span class="block text-xs text-base-content/60">Verifikator — verifikasi akun pemberi kerja</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="petugas.ekspos" data-demo-password="ekspos2026"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-petugas-ekspos">
+            <span class="min-w-0">
+              <b class="block text-[13px]">petugas.ekspos <span class="font-normal text-base-content/60">· Bayu Kurniawan</span></b>
+              <span class="block text-xs text-base-content/60">Petugas Ekspos — jadwal ekspos &amp; hasil penilaian</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="validator.hpk" data-demo-password="validator2026"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-validator-hpk">
+            <span class="min-w-0">
+              <b class="block text-[13px]">validator.hpk <span class="font-normal text-base-content/60">· Maya Anggraeni</span></b>
+              <span class="block text-xs text-base-content/60">Validator — validasi dokumen permohonan HPK</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="disnaker.bekasi" data-demo-password="disnaker2026"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-disnaker">
+            <span class="min-w-0">
+              <b class="block text-[13px]">disnaker.bekasi <span class="font-normal text-base-content/60">· Rudi Hartono</span></b>
+              <span class="block text-xs text-base-content/60">Disnaker Kab/Kota — perpanjangan lintas kab/kota &amp; terbitkan SKRD</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="direktur.pptka" data-demo-password="direktur2026"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-direktur-hpk">
+            <span class="min-w-0">
+              <b class="block text-[13px]">direktur.pptka <span class="font-normal text-base-content/60">· Direktur PPTKA</span></b>
+              <span class="block text-xs text-base-content/60">Direktur — terbitkan HPK &amp; TTE barcode</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+          <button type="button" data-demo-login="superadmin" data-demo-password="superadmin2026"
+                  class="flex w-full items-center justify-between gap-3 rounded-lg border border-base-300 bg-base-100 px-3.5 py-2.5 text-left transition hover:border-secondary" data-testid="login-demo-superadmin">
+            <span class="min-w-0">
+              <b class="block text-[13px]">superadmin <span class="font-normal text-base-content/60">· Superadmin</span></b>
+              <span class="block text-xs text-base-content/60">Superadmin — data Visa/ITAS dari Imigrasi &amp; perpanjangan RPTKA (view-only)</span>
+            </span>
+            <span class="shrink-0 text-xs font-bold text-secondary">Pakai →</span>
+          </button>
+        </div>
+
+        <p class="mt-7 border-t border-base-300 pt-5 text-[13px] leading-relaxed text-base-content/70">Kendala masuk dengan SIAPkerja, atau pertanyaan akses TKA Online: kirim ke <b class="text-base-content">user.pptka@kemnaker.go.id</b>.</p>
+      </section>
+
+      <!-- Login gagal -->
+      <section data-screen-panel="loginGagal" hidden class="w-full max-w-[460px] rounded-2xl border border-base-300 bg-base-100 p-6 sm:p-9">
+        <div class="mb-5 grid size-13 place-items-center rounded-[14px] bg-error/10 text-2xl font-extrabold text-error" aria-hidden="true">×</div>
+        <h2 data-screen-heading tabindex="-1" class="mb-2 text-2xl font-extrabold">Login gagal</h2>
+        <p class="mb-5 text-[15px] leading-relaxed text-base-content/70">Akun <b id="failed-username" class="text-base-content">nbp.hrd</b> tidak dapat masuk saat ini. Kemungkinan akun dinonaktifkan atau belum diverifikasi petugas.</p>
+        <ol class="mb-5.5 list-inside list-decimal rounded-[10px] bg-base-200 p-4 text-sm leading-[1.7] text-base-content/80">
+          <li>Periksa email verifikasi dari TKA Online.</li>
+          <li>Hubungi <b>user.pptka@kemnaker.go.id</b> untuk aktivasi ulang.</li>
+          <li>Sertakan nama pemberi kerja dan NPWP.</li>
+        </ol>
+        <div class="grid grid-cols-2 gap-2.5">
+          <button type="button" data-go="login" class="btn h-auto rounded-[10px] border-base-content/20 bg-base-100 py-[13px] text-[15px] font-bold shadow-none">Coba lagi</button>
+          <a href="hotline.html" class="btn btn-primary h-auto rounded-[10px] py-[13px] text-[15px] font-bold">Hubungi hotline</a>
+        </div>
+      </section>
+
+      <!-- Verifikasi email (3 hasil) -->
+      <section data-screen-panel="emailVerify" hidden class="w-full max-w-[460px]">
+        <h2 data-screen-heading tabindex="-1" class="sr-only">Verifikasi email</h2>
+        <div id="ev-tabs" role="tablist" aria-label="Hasil tautan verifikasi (demo)" class="tabs tabs-box mb-4.5 flex gap-1.5 rounded-[10px] p-1 text-[13px] font-semibold"></div>
+        <div id="ev-panel" role="tabpanel" class="rounded-2xl border border-base-300 bg-base-100 p-6 text-center sm:p-9" aria-live="polite">
+          <div id="ev-loading" hidden aria-busy="true" class="grid justify-items-center gap-3">
+            <span class="skeleton size-16 rounded-full"></span><span class="skeleton h-6 w-56"></span><span class="skeleton h-4 w-72 max-w-full"></span>
+            <span class="sr-only">Memeriksa tautan verifikasi…</span>
+          </div>
+          <div id="ev-error" hidden role="alert" class="grid justify-items-center gap-3 text-sm text-error">
+            <p>Hasil verifikasi gagal dimuat.</p>
+            <button type="button" id="ev-retry" class="btn btn-sm btn-outline btn-error">Coba lagi</button>
+          </div>
+          <div id="ev-result" hidden>
+            <div id="ev-icon" class="mx-auto mb-5 grid size-16 place-items-center rounded-full text-[28px] font-extrabold" aria-hidden="true"></div>
+            <h3 id="ev-title" class="mb-2 text-[22px] font-extrabold"></h3>
+            <p id="ev-body" class="mb-6 text-[15px] leading-relaxed text-base-content/70"></p>
+            <button type="button" id="ev-cta" data-go="login" class="btn btn-primary h-auto w-full rounded-[10px] py-3.5 text-[15px] font-bold"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lupa password -->
+      <section data-screen-panel="lupa" hidden class="w-full max-w-[440px]">
+        <button type="button" data-go="login" class="link link-secondary text-sm font-bold no-underline hover:underline">← Kembali ke login</button>
+        <h2 data-screen-heading tabindex="-1" class="mt-4.5 mb-1.5 text-[28px] font-extrabold tracking-[-.02em]">Lupa password</h2>
+        <p class="mb-6 text-sm leading-relaxed text-base-content/70">Masukkan email akun. Email harus terdaftar pada tepat satu akun pemberi kerja.</p>
+        <form id="lupa-form" data-prefix="lupa" novalidate>
+          <div class="mb-4.5 grid gap-1.5">
+            <label for="lupa-email" class="text-[13px] font-bold">Email akun</label>
+            <input id="lupa-email" name="email" type="email" value="hrd@nusantarabaja.co.id" required autocomplete="email" aria-describedby="lupa-email-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="lupa-email-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <button type="submit" id="lupa-submit" class="btn btn-primary h-auto w-full rounded-[10px] py-[15px] text-[15px] font-bold">Kirim tautan reset</button>
+        </form>
+        <div id="lupa-sent" hidden role="status" class="mt-4 rounded-[10px] bg-success/10 px-4 py-3.5 text-sm leading-normal text-success">Tautan reset dikirim ke <span id="lupa-sent-to">hrd@nusantarabaja.co.id</span>. Periksa folder spam bila tidak ada di kotak masuk. <button type="button" data-go="reset" class="cursor-pointer font-extrabold underline">Buka tautan (demo)</button></div>
+      </section>
+
+      <!-- Reset password -->
+      <section data-screen-panel="reset" hidden class="w-full max-w-[440px]">
+        <h2 data-screen-heading tabindex="-1" class="mb-1.5 text-[28px] font-extrabold tracking-[-.02em]">Buat password baru</h2>
+        <p class="mb-6 text-sm text-base-content/70">Untuk akun <b class="text-base-content">nbp.hrd</b> · <span id="reset-email">hrd@nusantarabaja.co.id</span></p>
+        <form id="reset-form" data-prefix="reset" novalidate class="grid gap-4">
+          <div id="reset-alert" role="alert" hidden class="alert alert-error alert-soft text-sm"></div>
+          <div class="grid gap-1.5">
+            <label for="reset-password" class="text-[13px] font-bold">Password baru</label>
+            <input id="reset-password" name="password" type="password" value="BajaPresisi#26" required minlength="8" maxlength="20" autocomplete="new-password" aria-describedby="reset-strength reset-password-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="reset-password-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <div data-strength-bars class="grid grid-cols-4 gap-1" aria-hidden="true">
+            <span class="h-1 rounded-full"></span><span class="h-1 rounded-full"></span><span class="h-1 rounded-full"></span><span class="h-1 rounded-full"></span>
+          </div>
+          <ul id="reset-strength" data-strength-list class="grid gap-1.5 text-[13px]" aria-live="polite">
+            <li data-check="length"><span data-role="mark"></span> 8–20 karakter</li>
+            <li data-check="mixedCase"><span data-role="mark"></span> Huruf besar dan kecil</li>
+            <li data-check="digitOrSymbol"><span data-role="mark"></span> Angka atau simbol</li>
+          </ul>
+          <div class="grid gap-1.5">
+            <label for="reset-password-confirm" class="text-[13px] font-bold">Ulangi password baru</label>
+            <input id="reset-password-confirm" name="passwordConfirm" type="password" value="BajaPresisi#26" required maxlength="20" autocomplete="new-password" aria-describedby="reset-passwordConfirm-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="reset-passwordConfirm-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <button type="submit" class="btn btn-primary h-auto w-full rounded-[10px] py-[15px] text-[15px] font-bold">Simpan password</button>
+        </form>
+      </section>
+
+      <!-- Wajib ganti password -->
+      <section data-screen-panel="wajibPassword" hidden class="w-full max-w-[460px] rounded-2xl border border-base-300 bg-base-100 p-6 sm:p-9">
+        <span class="rounded-[5px] bg-warning/10 px-2 py-1 text-[11px] font-extrabold tracking-[.08em] text-warning">WAJIB SEBELUM MELANJUTKAN</span>
+        <h2 data-screen-heading tabindex="-1" class="mt-3.5 mb-2 text-2xl font-extrabold">Ganti password Anda</h2>
+        <p class="mb-5.5 text-sm leading-relaxed text-base-content/70">Password akun ini diatur ulang oleh petugas. Demi keamanan, buat password baru. Anda akan keluar otomatis setelah berhasil.</p>
+        <form id="change-form" data-prefix="change" novalidate class="grid gap-3.5">
+          <div class="grid gap-1.5">
+            <label for="change-old" class="text-[13px] font-bold">Password lama</label>
+            <input id="change-old" name="oldPassword" type="password" value="sementara01" required maxlength="20" autocomplete="current-password" aria-describedby="change-oldPassword-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="change-oldPassword-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <div class="grid gap-1.5">
+            <label for="change-password" class="text-[13px] font-bold">Password baru</label>
+            <input id="change-password" name="password" type="password" value="BajaPresisi#26" required minlength="8" maxlength="20" autocomplete="new-password" aria-describedby="change-password-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="change-password-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <div class="grid gap-1.5">
+            <label for="change-password-confirm" class="text-[13px] font-bold">Konfirmasi password baru</label>
+            <input id="change-password-confirm" name="passwordConfirm" type="password" value="BajaPresisi#26" required maxlength="20" autocomplete="new-password" aria-describedby="change-passwordConfirm-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="change-passwordConfirm-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <div id="change-alert" role="alert" hidden class="alert alert-error alert-soft text-sm"></div>
+          <button type="submit" class="btn btn-primary h-auto w-full rounded-[10px] py-[15px] text-[15px] font-bold">Ganti password &amp; keluar</button>
+        </form>
+      </section>
+
+      <!-- Wajib verifikasi email -->
+      <section data-screen-panel="wajibEmail" hidden class="w-full max-w-[460px] rounded-2xl border border-base-300 bg-base-100 p-6 sm:p-9">
+        <span class="rounded-[5px] bg-warning/10 px-2 py-1 text-[11px] font-extrabold tracking-[.08em] text-warning">WAJIB SEBELUM MELANJUTKAN</span>
+        <h2 data-screen-heading tabindex="-1" class="mt-3.5 mb-2 text-2xl font-extrabold">Verifikasi email akun</h2>
+        <p class="mb-5.5 text-sm leading-relaxed text-base-content/70">Email <b id="must-email" class="text-base-content">hrd@nusantarabaja.co.id</b> belum diverifikasi. Klik tautan pada email yang kami kirim untuk membuka seluruh menu.</p>
+        <button type="button" id="must-resend" class="btn mb-2.5 h-auto w-full rounded-[10px] border-base-content/20 bg-base-100 py-3.5 text-sm font-bold shadow-none">Kirim ulang tautan</button>
+        <button type="button" id="must-change-email" aria-expanded="false" aria-controls="must-email-form" class="btn h-auto w-full rounded-[10px] border-0 bg-base-200 py-3.5 text-sm font-bold text-secondary shadow-none">Ganti alamat email</button>
+        <form id="must-email-form" data-prefix="must" novalidate hidden class="mt-4 grid gap-3">
+          <div class="grid gap-1.5">
+            <label for="must-email-input" class="text-[13px] font-bold">Email baru</label>
+            <input id="must-email-input" name="email" type="email" required maxlength="254" autocomplete="email" aria-describedby="must-email-error" class="input h-12 w-full rounded-[10px] text-[15px]" />
+            <p id="must-email-error" class="text-xs text-error" aria-live="polite" hidden></p>
+          </div>
+          <button type="submit" class="btn btn-primary h-auto rounded-[10px] py-3 text-sm font-bold">Simpan &amp; kirim tautan</button>
+        </form>
+      </section>
+
+      <!-- Pengumuman wajib baca -->
+      <section data-screen-panel="pengumuman" hidden class="w-full max-w-[620px] overflow-hidden rounded-2xl border border-base-300 bg-base-100">
+        <div class="flex flex-wrap items-center gap-3 border-b border-base-300 px-6 py-6 sm:px-8">
+          <span class="badge-highlight rounded-[5px] px-2 py-1 text-[11px] font-extrabold tracking-[.08em]">PENGUMUMAN PENTING</span>
+          <h2 data-screen-heading tabindex="-1" class="text-[13px] font-normal text-base-content/70">Wajib dibaca sebelum masuk</h2>
+        </div>
+        <div id="ann-body" class="max-h-[420px] overflow-auto px-6 py-7 sm:px-8" aria-live="polite">
+          <div id="ann-loading" aria-busy="true" class="grid gap-5">
+            <div class="grid gap-2"><span class="skeleton h-3 w-40"></span><span class="skeleton h-5 w-4/5"></span><span class="skeleton h-12 w-full"></span></div>
+            <div class="grid gap-2"><span class="skeleton h-3 w-40"></span><span class="skeleton h-5 w-3/5"></span><span class="skeleton h-12 w-full"></span></div>
+            <span class="sr-only">Memuat pengumuman…</span>
+          </div>
+          <div id="ann-error" hidden role="alert" class="alert alert-error alert-soft text-sm">
+            <span>Pengumuman gagal dimuat.</span>
+            <button type="button" id="ann-retry" class="btn btn-sm btn-outline btn-error">Coba lagi</button>
+          </div>
+          <ul id="ann-list" hidden class="grid gap-5"></ul>
+          <template id="ann-template">
+            <li>
+              <div class="mb-1 text-xs text-base-content/60"><span data-slot="tgl"></span> · <span data-slot="tag"></span></div>
+              <h3 data-slot="judul" class="mb-1.5 text-[17px] font-extrabold"></h3>
+              <p data-slot="isi" class="text-sm leading-[1.65] text-base-content/70"></p>
+            </li>
+          </template>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-3 bg-base-200 px-6 py-5 sm:px-8">
+          <span class="text-[13px] text-base-content/70">Masuk sebagai <b id="ann-company" class="text-base-content">—</b></span>
+          <a id="ann-continue" href="portal-pemberi-kerja.html" class="btn btn-primary h-auto rounded-[10px] px-5.5 py-[13px] text-sm font-bold">Saya Mengerti &amp; Lanjutkan →</a>
+        </div>
+      </section>
+
+      <!-- Sesi berakhir -->
+      <div data-screen-panel="sesi" hidden class="absolute inset-0 flex items-center justify-center px-5">
+        <div aria-hidden="true" class="absolute inset-0 bg-[repeating-linear-gradient(0deg,var(--color-base-200)_0_60px,var(--color-base-100)_60px_120px)] blur-[1px]"></div>
+        <div aria-hidden="true" class="absolute inset-0 bg-neutral/40"></div>
+        <section role="alertdialog" aria-modal="false" aria-labelledby="sesi-title" aria-describedby="sesi-desc"
+                 class="relative w-full max-w-[420px] rounded-2xl bg-base-100 p-8 shadow-2xl">
+          <div class="mb-4.5 grid size-12 place-items-center rounded-[14px] bg-warning/10 text-[22px] font-extrabold text-warning" aria-hidden="true">⏱</div>
+          <h2 id="sesi-title" data-screen-heading tabindex="-1" class="mb-2 text-[22px] font-extrabold">Sesi Berakhir</h2>
+          <p id="sesi-desc" class="mb-5.5 text-sm leading-relaxed text-base-content/70">Sesi Anda telah berakhir karena tidak aktif. Masuk kembali untuk melanjutkan — Anda akan dikembalikan ke <b class="text-base-content">Perubahan Pengesahan RPTKA</b>.</p>
+          <button type="button" data-go="login" class="btn btn-primary h-auto w-full rounded-[10px] py-3.5 text-[15px] font-bold">Masuk kembali</button>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast-region" class="toast toast-end toast-bottom z-50" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/pages/akun-login.js"></script>
+</body>
+</html>

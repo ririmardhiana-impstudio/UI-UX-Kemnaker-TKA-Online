@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="tka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Pemberi Kerja — TKA Online</title>
+  <link rel="icon" href="uploads/kemnaker_new.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/daisyui.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5/themes.css" rel="stylesheet" type="text/css" />
+  <link href="css/tokens.css" rel="stylesheet" type="text/css" />
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <meta name="use-mock" content="true" />
+  <meta name="api-base-url" content="/api/v1" />
+  <script>window.USE_MOCK = document.querySelector('meta[name="use-mock"]')?.content === 'true'; window.API_BASE_URL = document.querySelector('meta[name="api-base-url"]')?.content ?? '/api/v1';</script>
+  <script type="module" src="js/api/client.js"></script>
+  <script type="module" src="js/prototype-banner.js"></script>
+</head>
+<body class="bg-base-200 text-base-content">
+  <a href="#view" class="skip-link" data-testid="portal-pemberi-kerja-link-skip">Lewati ke konten</a>
+
+  <div class="drawer lg:drawer-open">
+    <input id="portal-drawer" type="checkbox" class="drawer-toggle" aria-label="Tampilkan menu navigasi" />
+
+    <div class="drawer-content flex min-h-screen min-w-0 flex-col">
+      <div class="sticky top-0 z-sticky">
+        <div id="screen-switcher"></div>
+        <header class="flex min-h-16 flex-wrap items-center gap-4 border-b border-base-300 bg-base-100 px-4 py-2.5 lg:px-7">
+          <label for="portal-drawer" class="btn btn-ghost btn-square btn-sm lg:hidden" aria-label="Buka menu navigasi" data-testid="portal-btn-menu">
+            <span aria-hidden="true" class="text-lg">☰</span>
+          </label>
+          <p id="crumb" class="min-w-[200px] flex-[1_1_240px] text-[13px] leading-snug text-base-content/60">Memuat…</p>
+          <div id="nt-bell-slot"></div>
+          <a href="hotline.html" class="btn btn-sm border-base-300 bg-base-100 font-semibold shadow-none" data-testid="portal-link-hotline">Bantuan Hotline</a>
+          <div class="dropdown dropdown-end">
+            <button type="button" id="user-menu-trigger" tabindex="0" aria-expanded="false" aria-controls="user-menu" class="flex cursor-pointer items-center gap-2.5 rounded-field p-1" data-testid="portal-btn-user-menu">
+              <span class="skeleton size-8.5 rounded-full"></span>
+            </button>
+            <ul id="user-menu" tabindex="-1" class="dropdown-content menu z-sticky mt-2 w-56 rounded-box border border-base-300 bg-base-100 p-1.5 text-[13px] shadow-lg" aria-label="Menu akun">
+              <li><button type="button" data-action="go" data-page="profil" data-params="{}">Profil Perusahaan</button></li>
+              <li><button type="button" data-action="go" data-page="dokumen" data-params="{}" class="flex justify-between">Dokumen Perusahaan <span class="badge badge-soft badge-warning badge-xs h-auto py-0.5 font-extrabold">upload</span></button></li>
+              <li><button type="button" data-action="go" data-page="password" data-params="{}">Ganti Password</button></li>
+              <li><button type="button" data-action="go" data-page="email" data-params="{}">Ganti Alamat Email</button></li>
+              <li class="mt-1 border-t border-base-200 pt-1"><a href="akun-login.html" class="text-error" data-testid="portal-link-keluar">Keluar</a></li>
+            </ul>
+          </div>
+        </header>
+      </div>
+
+      <main id="view" tabindex="-1" aria-busy="true" class="mx-auto grid w-full max-w-[1320px] gap-5 p-4 focus:outline-none md:p-7">
+        <div class="grid gap-5">
+          <span class="sr-only" role="status">Memuat data…</span>
+          <div class="skeleton h-9 w-72"></div>
+          <div class="skeleton h-64 w-full"></div>
+        </div>
+      </main>
+    </div>
+
+    <div class="drawer-side z-40">
+      <label for="portal-drawer" aria-label="Tutup menu navigasi" class="drawer-overlay"></label>
+      <aside class="flex min-h-full w-60 flex-col bg-primary text-primary-content/80" aria-label="Navigasi portal">
+        <div id="brand" class="px-5 pb-4 pt-5 text-primary-content"></div>
+        <div id="company-card"></div>
+        <nav id="side-menu" aria-label="Menu utama"></nav>
+        <p class="mt-auto border-t border-primary-content/10 px-5 py-3.5 text-[11px] leading-relaxed text-primary-content/60">WhatsApp 0811 1380 1443<br />user.pptka@kemnaker.go.id</p>
+      </aside>
+    </div>
+  </div>
+
+  <dialog id="riwayat-drawer" class="modal modal-end" aria-labelledby="riwayat-title">
+    <div class="modal-box h-full max-h-none max-w-full rounded-none p-0">
+      <div data-dialog-body></div>
+    </div>
+    <form method="dialog" class="modal-backdrop"><button>Tutup</button></form>
+  </dialog>
+
+  <dialog id="portal-modal" class="modal" aria-label="Dokumen dan konfirmasi">
+    <div class="modal-box w-full p-0">
+      <div data-dialog-body></div>
+    </div>
+    <form method="dialog" class="modal-backdrop"><button>Tutup</button></form>
+  </dialog>
+
+  <div id="toast" class="toast toast-end z-banner" aria-live="polite"></div>
+
+  <script type="module" src="js/pages/portal-pemberi-kerja.js"></script>
+</body>
+</html>
